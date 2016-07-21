@@ -1,0 +1,14 @@
+---
+default: &default
+  client_key: <%= ENV["ADMIN_WEBAPP_APIM8_CLIENT_KEY"] %>
+  client_secret: <%= ENV["ADMIN_WEBAPP_APIM8_CLIENT_SECRET"] %>
+  endpoint: <%= ENV["ADMIN_WEBAPP_APIM8_ENDPOINT"] %>
+
+development:
+  <<: *default
+
+vagrant:
+  <<: *default
+
+test:
+  <<: *default
