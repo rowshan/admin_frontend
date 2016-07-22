@@ -1,35 +1,22 @@
 Rails.application.routes.draw do
 
-  get 'password_resets/create'
 
-  get 'password_resets/update'
+  get 'home/index'=> 'home/index'
+  #root to:'home/index'
 
-  get 'password_resets/destroy'
+  resources :password_resets
+  resources :my_accounts, :path=> "my_account"#:controller=>'my_account', :only=>[:edit,:update,:destroy,:show]
+  resources :sessions, only: [:new, :create, :destroy]
+  #
+  # match '/signin',  to: 'sessions#new'
+  # match '/signout', to: 'sessions#destroy', via: :delete
 
-  get 'my_accounts/create'
 
-  get 'my_accounts/update'
-
-  get 'my_accounts/destroy'
-
-  get 'accounts/index'
-
-  get 'accounts/create'
-
-  get 'accounts/update'
-
-  get 'accounts/destroy'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  namespace :dashboard do
-    get 'dashboards/index'
+  namespace :role do
+    resources :super_admin_dashboards
+    resources :admin_dashboards
   end
 
-  get 'home/index'
-  #root 'home/index'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

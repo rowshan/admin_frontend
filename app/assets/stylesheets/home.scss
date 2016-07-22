@@ -2,18 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-§color:red
-body{background: #B00100}
 p.uppercase {
   text-transform: uppercase;
 }
-.navbar-brand {
-  padding: 0px; /* firefox bug fix */
-}
-.navbar-brand>img {
-  height: 100%;
-  padding: 15px; /* firefox bug fix */
-  width: auto;
+.navbar .nav > li > div {
+  padding:15px 10px 15px
 }
 
 .dropdown-submenu {
