@@ -1,47 +1,30 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: [:new, :create, :destroy]
 
   # GET /sessions/new
   def new
-    @session = Session.new
+    # displays login form
   end
 
 
   # POST /sessions
   # POST /sessions.json
   def create
-    @session = Session.new(session_params)
-
-
-    respond_to do |format|
-      if @session.save
-        format.html { redirect_to @session, notice: 'Session was successfully created.' }
-        format.json { render :show, status: :created}
-      else
-        format.html { render :new }
-        format.json { render json: @session.errors, status: :unprocessable_entity }
-      end
-    end
+    #user auth
+    user= ApiM8::Resources::Accounts::User.new(:login=>params[:login],:password=>params[:password])
+    session[:current_user_id]=user.id
+    redirect_to home_index_url
   end
 
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    @session.destroy
-    respond_to do |format|
-      format.html { redirect_to sessions_url, notice: 'Session was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @_current_user = session[:current_user_id] = nil
+    redirect_to home_index_url
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_session
-      @session = Session.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def session_params
-      params.fetch(:session, {})
-    end
+  # private
+  #   # Never trust parameters from the scary internet, only allow the white list through.
+  #   def login_params
+  #     params.fetch(:user, {}).permit(:login,:password).require(:user)
+  #   end
 end
