@@ -2,14 +2,14 @@ Rails.application.routes.draw do
 
 
   get 'home/index'=> 'home/index'
-  #root to:'home/index'
+  #root 'home/index'
 
   resources :password_resets
   resources :my_accounts, :path=> "my_account"#:controller=>'my_account', :only=>[:edit,:update,:destroy,:show]
   resources :sessions, only: [:new, :create, :destroy]
-  #
-  # match '/signin',  to: 'sessions#new'
-  # match '/signout', to: 'sessions#destroy', via: :delete
+
+  get 'login'=>'sessions#new', :as=>'login'
+  get 'logout'=>'sessions#destroy', :as=>'logout'
 
 
   namespace :role do

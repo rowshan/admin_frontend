@@ -1,5 +1,7 @@
+<% provide(:title, "Log in") %>
+
 <h1>New Session</h1>
 
 <%= render 'form', session: @session %>
 
-<%= link_to 'Back', sessions_path %>
+<%= link_to 'Back', new_session_path %>

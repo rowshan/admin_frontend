@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    flash[:notice] = "Hello Flash"
-
+    flash[:notice] = "Welcome!"
   end
 end
+
