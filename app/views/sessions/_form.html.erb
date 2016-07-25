@@ -1,17 +1,38 @@
-<%= form_for(session) do |f| %>
-  <% if session.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(session.errors.count, "error") %> prohibited this session from being saved:</h2>
 
-      <ul>
-      <% session.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+<% if params[:controller]== 'sessions'%>
+
+
+<%#= form_for(@session,url: sessions_path) do |f| %>
+    <%# if @session.errors.any? %>
+
+        <!--<div id="error_explanation">-->
+          <!--<h2><%#= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>-->
+          <!--<ul>-->
+            <!--<%# @session.errors.full_messages.each do |message| %>-->
+                <!--<li><%#= message %></li>-->
+            <!--<%#end %>-->
+          <!--</ul>-->
+        <!--</div>-->
+    <!--<%#end %>-->
+
+<%= form_tag sessions_path do |f| %>
+
+
+    <div>
+
+      <%= label_tag :login %><br/>
+      <%= text_field_tag :login %>
     </div>
-  <% end %>
+    <div>
+      <%= label_tag :password %><br/>
+      <%= password_field_tag :password %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= submit_tag :submit %>
+    </div>
+        <p>Forgot Password? <%= link_to "Reset password", password_resets_path %></p>
+
+    <% end %>
 <% end %>
