@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
 
       session[:current_user_id]=user.id
       redirect_to role_super_admin_dashboards_url, :notice => "Logged in!"
+     # redirect_to root_url, :notice => "Logged in!"
     else
       flash.now.alert = "Invalid email or password"
 
@@ -32,7 +33,7 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1.json
   def destroy
     @_current_user = session[:current_user_id] = nil
-    redirect_to home_index_url
+    redirect_to root_url
   end
 
   # private
