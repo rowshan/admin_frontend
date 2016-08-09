@@ -13,17 +13,17 @@ class SessionsController < ApplicationController
   # POST /sessions.json
   def create
    # user=  ApiM8::Resources::Accounts::User.new(params[:login],params[:password])
-    user= ApiM8::Resources::Accounts::User.new(params[:login])
+    user= ApiM8::Resources::Accounts::User.new(:login=>params[:login])
 
     logger.debug "New user: #{user.attributes.inspect}"
    # if user.is_a?ApiM8::Resources::Accounts::User
     if user  #&& user.authenticate(params[:password])
 
      session[:current_user_id]=user.id
-      redirect_to role_super_admin_dashboards_url, :notice => "Logged in!"
-       #redirect_to root_url, :notice => "Logged in!"
+     redirect_to role_super_admin_dashboards_url, :notice => "Logged in!"
+     #redirect_to root_url,  alert: "logged in"
     else
-      redirect_to login_, :notice => "Logged out!"
+      redirect_to login_url, :notice => "Logged out!"
      # render "new"
     end
 
