@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 
   resources :password_resets
   resources :my_accounts, :path => "my_account" #:controller=>'my_account', :only=>[:edit,:update,:destroy,:show]
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, to: 'sessions#create', only: [:new, :create, :destroy]
 
   get 'login' => 'sessions#new', :as => 'login'
+  #get 'login', to:'sessions#create'
   get 'logout' => 'sessions#destroy', :as => 'logout'
 
 
