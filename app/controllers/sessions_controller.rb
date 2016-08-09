@@ -23,8 +23,8 @@ class SessionsController < ApplicationController
      redirect_to role_super_admin_dashboards_url, :notice => "Logged in!"
      #redirect_to root_url,  alert: "logged in"
     else
-      redirect_to login_url, :notice => "Logged out!"
-     # render "new"
+      #redirect_to login_url
+      render "new"
     end
 
   end
