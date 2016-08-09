@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   #http_basic_authenticate_with :name => "frodo", :password => "thering"
 
 
@@ -11,20 +12,18 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    #user auth
-    user=  ApiM8::Resources::Accounts::User.new(:login=>params[:login],:password=>params[:password])
-   # user= ApiM8::Resources::Accounts::User.find_by_login(:login => params[:login])
-
+    #user=  ApiM8::Resources::Accounts::User.new(params[:login],params[:password])
+    user= ApiM8::Resources::Accounts::User.new(params[:login])
+    logger.debug "New user: #{user.attributes.inspect}"
    # if user.is_a?ApiM8::Resources::Accounts::User
-    if user #&& user.authenticate
+  # if user #&& user.authenticate(params[:password])
 
-      session[:current_user_id]=user.id
+     if session[:current_user_id]=user.id
       redirect_to role_super_admin_dashboards_url, :notice => "Logged in!"
-     # redirect_to root_url, :notice => "Logged in!"
+       #redirect_to root_url, :notice => "Logged in!"
     else
-      flash.now.alert = "Invalid email or password"
-
-      render "new"
+      redirect_to login_url, :notice => "Logged out!"
+     # render "new"
     end
 
   end
@@ -32,8 +31,10 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    @_current_user = session[:current_user_id] = nil
-    redirect_to root_url
+
+    #reset_session
+    session[:current_user_id] = nil
+    redirect_to login_url, alert: "Successfully logged out"
   end
 
   # private

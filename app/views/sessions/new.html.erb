@@ -2,6 +2,45 @@
 
 <h1>Enter Your Login Information </h1>
 
-<%= render 'form', session: @session %>
+<%#= render 'form', session: @session %>
 
+<% if params[:controller]== 'sessions'%>
+
+<% if flash[:alert]%>
+    <p id="notice"> <%= flash[:alert]%></p>
+
+<% end%>
+<%#= form_for(@session,url: sessions_path) do |f| %>
+<%# if @session.errors.any? %>
+
+<!--<div id="error_explanation">-->
+<!--<h2><%#= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>-->
+<!--<ul>-->
+<!--<%# @session.errors.full_messages.each do |message| %>-->
+<!--<li><%#= message %></li>-->
+<!--<%#end %>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<%#end %>-->
+
+<%= form_tag sessions_path do |f| %>
+
+    <fieldset>
+      <div>
+
+        <%= label_tag :email %><br/>
+        <%= text_field_tag :login,params[:login] %>
+      </div>
+      <div>
+        <%= label_tag :password %><br/>
+        <%= password_field_tag :password,params[:password] %>
+      </div>
+
+      <div class="actions">
+        <%= submit_tag :submit %>
+      </div>
+      <p>Forgot Password? <%= link_to "Reset password", password_resets_path %></p>
+    </fieldset>
+<% end %>
+<% end %>
 <%= link_to 'Back', new_session_path %>

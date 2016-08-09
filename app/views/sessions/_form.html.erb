@@ -2,7 +2,10 @@
 
 <% if params[:controller]== 'sessions'%>
 
+<% if flash[:alert]%>
+    <p id="notice"> <%= flash[:alert]%></p>
 
+    <% end%>
 <%#= form_for(@session,url: sessions_path) do |f| %>
     <%# if @session.errors.any? %>
 
@@ -18,7 +21,7 @@
 
 <%= form_tag sessions_path do |f| %>
 
-
+<fieldset>
     <div>
 
     <%= label_tag :email %><br/>
@@ -26,13 +29,13 @@
     </div>
     <div>
       <%= label_tag :password %><br/>
-      <%= password_field_tag :password %>
+      <%= password_field_tag :password,params[:password] %>
     </div>
 
     <div class="actions">
       <%= submit_tag :submit %>
     </div>
         <p>Forgot Password? <%= link_to "Reset password", password_resets_path %></p>
-
+</fieldset>
     <% end %>
 <% end %>

@@ -13,3 +13,6 @@ module AdminWebapp
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+# ActiveRecord::SessionStore::Session.table_name = 'legacy_session_table'
+# ActiveRecord::SessionStore::Session.primary_key = 'session_id'
+# ActiveRecord::SessionStore::Session.data_column_name = 'legacy_session_data'
