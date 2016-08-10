@@ -6,6 +6,12 @@ class PasswordResetsController < ApplicationController
 
   end
 
+  def edit
+    #@user = ApiM8::Resources::Accounts::User.find_by_password_reset_token(params[:id])
+
+  end
+
+
   def new
   end
 
