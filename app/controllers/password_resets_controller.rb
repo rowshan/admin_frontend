@@ -20,10 +20,10 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = ApiM8::Resources::Accounts::User.new(params[:login],params[:password])
+    @user = ApiM8::Resources::Accounts::User.new(params[:login])
     if !@user.nil?
       @user.password_reset
-      redirect_to  edit_password_reset_path
+      redirect_to password_resets_path #edit_password_reset_path
 
       ## , :notice => "Email sent with password reset instructions."
     else

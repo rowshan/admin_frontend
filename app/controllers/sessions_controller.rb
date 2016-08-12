@@ -9,12 +9,14 @@ class SessionsController < ApplicationController
   # POST /sessions
   # POST /sessions.json
   def create
-    user= ApiM8::Resources::Accounts::User.login(params[:login], params[:password])
+    puts params[:login]
+
+    user= ApiM8::Resources::Accounts::User.new(params[:login], params[:password])
     #logger.debug "New user: #{user.attributes.inspect}"
 
     if !user.nil?
      session[:current_user_id]=user.id
-     redirect_to role_super_admin_dashboards_url, :notice => "Logged in as #{current_user}!"
+     redirect_to role_super_admin_dashboards_url, :notice => "Logged in as #{user}!"
      #redirect_to root_url,  alert: "logged in"
     else
         flash.now[:error] = "Invalid email/password combination"

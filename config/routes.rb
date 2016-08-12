@@ -5,15 +5,21 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :password_resets,:only=>[:create,:edit,:new,:update,:destroy,:show]
-  resources :my_accounts, :only=>[:create,:edit,:update,:destroy,:show,:index]
+  #resources :my_accounts, :only=>[:create,:edit,:update,:destroy,:show,:index]
   resources :sessions, :only => [:new, :create, :destroy]
 
-  get 'login' => 'sessions#new', :as => 'login'
-  #get 'login', to:'sessions#create'
+  get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy', :as => 'logout'
 
-  #get 'password_resets/:id/edit'=> 'password_reset#create', as: :password_reset
-  #get 'password_resets/new', to:'password_resets#new'
+
+  #password_reset controller
+  post 'password_resets'=> 'password_reset#create'
+  get 'password_resets/new', to:'password_resets#new'
+
+
+
+  #account setup
+  get 'signup' =>'my_accounts#new'
 
   namespace :role do
     resources :super_admin_dashboards
