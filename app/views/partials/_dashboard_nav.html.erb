@@ -15,10 +15,16 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-left">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Login as", @_current_user %></li>
+        <%# current_user.nil if? %>
 
-      </ul>
+      <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Login as", current_user.login %></li>
+        <%= link_to "Logout", :logout, method: :post %>
+        <%# else %>
+            <%= link_to "Register", my_accounts_path %> |
+            <%= link_to "Login", :login %>
+        <%# end %>
+            </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Dashboard</a></li>
         <li><a href="#">Settings</a></li>

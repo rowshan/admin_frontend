@@ -5,6 +5,9 @@ class MyAccountController < ApplicationController
   def edit
   end
 
+  def create
+
+  end
   def show
   end
 

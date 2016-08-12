@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
 
-  #http_basic_authenticate_with :name => "frodo", :password => "thering"
-
-
   # GET /sessions/new
   def new
     # displays login form
@@ -13,14 +10,15 @@ class SessionsController < ApplicationController
   # POST /sessions.json
   def create
     user= ApiM8::Resources::Accounts::User.login(params[:login], params[:password])
+    #logger.debug "New user: #{user.attributes.inspect}"
 
-    logger.debug "New user: #{user.attributes.inspect}"
-    if user
+    if !user.nil?
      session[:current_user_id]=user.id
-     redirect_to role_super_admin_dashboards_url, :notice => "Logged in!"
+     redirect_to role_super_admin_dashboards_url, :notice => "Logged in as #{current_user}!"
      #redirect_to root_url,  alert: "logged in"
     else
-      #redirect_to login_url
+        flash.now[:error] = "Invalid email/password combination"
+
       render "new"
     end
 
@@ -29,15 +27,9 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-
-    #reset_session
     session[:current_user_id] = nil
+    #signed_out
     redirect_to login_url, alert: "Successfully logged out"
   end
 
-  # private
-  #   # Never trust parameters from the scary internet, only allow the white list through.
-  #   def login_params
-  #     params.fetch(:user, {}).permit(:login,:password).require(:user)
-  #   end
 end
