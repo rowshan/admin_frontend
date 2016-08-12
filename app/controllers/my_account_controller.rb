@@ -6,6 +6,8 @@ class MyAccountController < ApplicationController
   end
 
   def create
+    @user= ApiM8::Resources::Accounts::User.profile()
+
 
   end
   def show

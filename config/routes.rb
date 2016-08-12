@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   #password_reset controller
   post 'password_resets'=> 'password_reset#create'
   get 'password_resets/new', to:'password_resets#new'
+  get 'password_resets/:id/edit', to:'password_resets#edit', as: :password_setup
 
 
 

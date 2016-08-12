@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   def create
     puts params[:login]
 
-    user= ApiM8::Resources::Accounts::User.new(params[:login], params[:password])
+    user= ApiM8::Resources::Accounts::User.login(params[:login], params[:password])
     #logger.debug "New user: #{user.attributes.inspect}"
 
     if !user.nil?

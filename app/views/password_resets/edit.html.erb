@@ -1,15 +1,17 @@
+<% provide(:title, "Reset Password") %>
 
-<%= form_for :password_reset, :url => password_reset_path(params[:id]) do |f| %>
-    <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+<h1>Enter Your User Information </h1>
+ <%= form_tag edit_password_reset_path do |f| %>
+    <%# if @user.errors.any? %>
+        <!--<div class="error_messages">-->
+          <!--<h2>Form is invalid</h2>-->
+          <!--<ul>-->
+            <!--<%# for message in @user.errors.full_messages %>-->
+                <!--<li><%#= message %></li>-->
+            <!--<%# end %>-->
+          <!--</ul>-->
+        <!--</div>-->
+    <%# end %>
     <div class="field">
       <%= f.label :password %>
       <%= f.password_field :password %>
