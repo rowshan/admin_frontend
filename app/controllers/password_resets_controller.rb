@@ -11,7 +11,7 @@ class PasswordResetsController < ApplicationController
   # end
 
   def edit
-    @user = ApiM8::Resources::Accounts::User.find_by_password_reset_token!(params[:id])
+    @user = ApiM8::Resources::Accounts::User.find(params[:id])
 
   end
 
@@ -19,7 +19,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = ApiM8::Resources::Accounts::User.new(params[:login])
+    @user = ApiM8::Resources::Accounts::User.new
+     @user=@user.login(params[:login],params[:password])
     if !@user.nil?
       @user.password_reset
       redirect_to edit_password_reset_url
