@@ -14,13 +14,13 @@
       </div>
     </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Collect the nav links, forms, and other content for toggling -->
     <div id="navbar" class="navbar-collapse collapse">
 
-    <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+      <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
       <ul class="nav navbar-nav">
         <div class="container-fluid">
-        <% if current_user %>
+          <% if current_user %>
               <ul class="nav navbar-nav">
                 <%= current_user.user %>
                 <li><%= link_to "Home", root_path %></li>
@@ -36,24 +36,24 @@
           <% end %>
           <div>
 
-            <%= render 'partials/user_sign_up'%>
+            <%#= render 'partials/user_sign_up' %>
 
           </div>
         </div>
 
         <!--</div>-->
       </ul>
-        <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
 
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
   </div>  <!-- .inner-container-->
-      </div>
+  </div>
 
 </nav>
 
