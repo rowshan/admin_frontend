@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
   # POST /sessions.json
   def create
     user=ApiM8::Resources::Accounts::User.new
-    #user=ApiM8::Resources::Accounts::User.login(params[:login], params[:password])
+   # user=ApiM8::Resources::Accounts::User.login(params[:login], params[:password])
     user= user.login(params[:login], params[:password])
-    #puts params[:login]
+    puts params[:login]
 
     #user= ApiM8::Resources::Accounts::User.login(params[:login], params[:password])
     #logger.debug "New user: #{user.attributes.inspect}"

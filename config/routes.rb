@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   # resources :homes
-  # get 'home/index'=> 'home/index'
+   get 'home/index'=> 'home/index'
   root to: 'home#index'
 
   resources :password_resets,:only=>[:create,:edit,:new,:update,:destroy,:show]
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
   #account setup
-  get 'signup' =>'my_accounts#new'
+  #get 'signup' =>'new_role_super_admin_dashboard'
 
   namespace :role do
     resources :super_admin_dashboards

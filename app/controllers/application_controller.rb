@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
- # include SessionsHelper
+  include SessionsHelper
 
 
-  private
+  protected
   #
   # # Finds the User with the ID stored in the session with the key
   # # :current_user_id This is a common way to handle user login in
