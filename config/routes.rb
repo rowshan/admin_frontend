@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
 
-  #password_reset controller
-  post 'password_resets' => 'password_reset#create'
-  get 'password_resets/new', to: 'password_resets#new'
-  get 'password_resets/:id/edit', to: 'password_resets#edit', as: :password_setup
+  # #password_reset controller
+   post 'password_resets', to: 'password_reset#create'
+   get 'password_resets/new', to: 'password_resets#new'
+   post 'password_resets/:id/edit', to: 'password_reset#create', as: :send_password_reset
+  # get 'password_resets/:id/edit', to: 'password_reset#edit'
+
 
 
   #account setup

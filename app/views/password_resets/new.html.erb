@@ -3,11 +3,17 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-        <%= f.label :Email %>
-        <%= f.email_field :login, class: 'form-control' %>
 
-        <%= f.submit "Reset Password", class: "btn btn-primary" %>
+    <%= form_tag password_resets_path do %>
+        <fieldset>
+
+          <%= label_tag :Email %>
+          <%= text_field_tag :login, params[:login], class: 'form-control',placeholder: "Please enter your email address" %>
+
+          <div class="actions">
+            <%= submit_tag "password reset", class: "btn btn-primary" %>
+          </div>
+        </fieldset>
+        </div>
+        </div>
     <% end %>
-  </div>
-</div>
