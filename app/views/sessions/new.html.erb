@@ -3,39 +3,16 @@
 
     <h1>Enter Your Login Information </h1>
 
-<%#= render 'form', session: @session %>
-
-
-<%# if flash[:alert]%>
-    <!--<p id="notice"> <%#= flash[:alert]%></p>-->
-
-<%# end%>
-<%#= form_for(@session,url: sessions_path) do |f| %>
-<%# if @session.errors.any? %>
-
-    <!--<div id="error_explanation">-->
-    <!--<h2><%#= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>-->
-    <!--<ul>-->
-    <!--<%# @session.errors.full_messages.each do |message| %>-->
-    <!--<li><%#= message %></li>-->
-    <!--<%#end %>-->
-    <!--</ul>-->
-    <!--</div>-->
-    <!--<%#end %>-->
-
-
-
 
     <%= form_tag login_path do |f| %>
 
         <fieldset>
           <div>
-
-            <%= label_tag :email %><br/>
+            <%= label_tag :Email %><br/>
             <%= text_field_tag :login, params[:login], :placeholder => "Email"%>
           </div>
           <div>
-            <%= label_tag :password %><br/>
+            <%= label_tag :Password %><br/>
             <%= password_field_tag :password, params[:password], :placeholder => "Password" %>
           </div>
 

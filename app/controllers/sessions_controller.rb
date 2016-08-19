@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     user=ApiM8::Resources::Accounts::User.new
     user=user.login(params[:login], params[:password])
 
-    if user.save
+    if user
       session[:current_user_id]=user.id
       redirect_to role_super_admin_dashboards_url, :notice => "Logged in as #{params[:login]}!"
     else
