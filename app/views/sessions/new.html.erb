@@ -1,10 +1,10 @@
-<% provide(:title, "Log in") %>
+<% if params[:controller]== 'sessions' %>
+    <% provide(:title, "Log in") %>
 
-<h1>Enter Your Login Information </h1>
+    <h1>Enter Your Login Information </h1>
 
 <%#= render 'form', session: @session %>
 
-<% if params[:controller]== 'sessions'%>
 
 <%# if flash[:alert]%>
     <!--<p id="notice"> <%#= flash[:alert]%></p>-->
@@ -13,40 +13,45 @@
 <%#= form_for(@session,url: sessions_path) do |f| %>
 <%# if @session.errors.any? %>
 
-<!--<div id="error_explanation">-->
-<!--<h2><%#= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>-->
-<!--<ul>-->
-<!--<%# @session.errors.full_messages.each do |message| %>-->
-<!--<li><%#= message %></li>-->
-<!--<%#end %>-->
-<!--</ul>-->
-<!--</div>-->
-<!--<%#end %>-->
+    <!--<div id="error_explanation">-->
+    <!--<h2><%#= pluralize(@session.errors.count, "error") %> prohibited this session from being saved:</h2>-->
+    <!--<ul>-->
+    <!--<%# @session.errors.full_messages.each do |message| %>-->
+    <!--<li><%#= message %></li>-->
+    <!--<%#end %>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--<%#end %>-->
 
-<%= form_tag sessions_path do |f| %>
 
-    <fieldset>
-      <div>
 
-        <%= label_tag :email %><br/>
-        <%= text_field_tag :login,params[:login],:placeholder => "Email" %>
-      </div>
-      <div>
-        <%= label_tag :password %><br/>
-        <%= password_field_tag :password,params[:password], :placeholder => "Password" %>
-      </div>
 
-      <div class="field">
-        <%= label_tag :remember_me %>
-        <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-      </div>
+    <%= form_tag login_path do |f| %>
 
-      <div class="actions">
-        <%= submit_tag :submit %>
-      </div>
-      <p>Forgot Password? <%= link_to "Reset password", new_password_reset_path %></p>
-    </fieldset>
+        <fieldset>
+          <div>
+
+            <%= label_tag :email %><br/>
+            <%= text_field_tag :login, params[:login], :placeholder => "Email"%>
+          </div>
+          <div>
+            <%= label_tag :password %><br/>
+            <%= password_field_tag :password, params[:password], :placeholder => "Password" %>
+          </div>
+
+          <div class="field">
+            <%= label_tag :remember_me %>
+            <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+          </div>
+
+          <div class="actions">
+            <%= submit_tag :submit,class: "btn btn-primary" %>
+          </div>
+          <p>Forgot Password? <%= link_to "Reset password", new_password_reset_path %></p>
+        </fieldset>
+    <% end %>
 <% end %>
-<% end %>
 
-<%= link_to 'Back', new_session_path %>
+
+
+<%= link_to 'Back', root_url %>

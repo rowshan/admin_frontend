@@ -1,2 +1,26 @@
 
+###not for use this will not work as we dont have any model
+<%= form_for(:user, url: login_path) do |f| %>
 
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+
+        <%= f.label :email %><br/>
+        <%= f.text_field :login,  class: 'form-control',:placeholder=> "Enter your email" %>
+
+        <%= f.label :password %><br/>
+        <%= f.password_field :password, class: 'form-control',:placeholder=> "Enter your password" %>
+        <%= f.label :remember_me %>
+
+        <%#= f.check_box :remember_me, class: 'form-control' %>
+        <%= f.check_box :remember_me, {class: 'form-control'}, "checked-value", "unchecked-value" %>
+
+
+        <%= f.submit "Log in", class: "btn btn-primary" %>
+
+
+        <p>Forgot Password? <%= link_to "Reset password", new_password_reset_path %></p>
+      </div>
+    </div>
+
+<% end %>

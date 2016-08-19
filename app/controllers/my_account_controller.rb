@@ -6,10 +6,11 @@ class MyAccountController < ApplicationController
   end
 
   def create
-    @user= ApiM8::Resources::Accounts::User.profile()
+    @user= ApiM8::Resources::Accounts::User.new(my_params)
 
 
   end
+
   def show
   end
 
@@ -19,4 +20,8 @@ class MyAccountController < ApplicationController
   def destroy
   end
 
+  private
+  def my_params
+    params.requre(:user).permit( :login, :password, :password_confirmation)
+  end
 end

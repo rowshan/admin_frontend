@@ -12,13 +12,14 @@
 
 <body>
 
-<% if content_for? :nav %>
+<%if content_for? :nav %>
     <%= content_for :nav %>
     <%= yield(:nav) %>
 
 <% else %>
     <%= render 'layouts/nav' %>
-<% end %>
+
+<%end %>
 
 
 

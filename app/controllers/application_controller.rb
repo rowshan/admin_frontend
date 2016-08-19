@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  include SessionsHelper
+  #include SessionsHelper
+  helper_method :current_user, :signed_in, :signed_out
 
 
   protected
@@ -10,7 +11,16 @@ class ApplicationController < ActionController::Base
   # # a Rails application; logging in sets the session value and
   # # logging out removes it.
   def current_user
-    @_current_user ||= session[:current_user_id] &&
-        ApiM8::Resources::Accounts::User.find_by(id: session[:current_user_id])
+    @current_user ||= session[:current_user_id] &&
+        ApiM8::Resources::Accounts::User.new(id: session[:current_user_id])
   end
+
+  def signed_in
+    !current_user.nil?
+  end
+
+  def signed_out
+    session[:current_user_id]=nil
+  end
+
 end

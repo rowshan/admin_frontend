@@ -14,17 +14,18 @@
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-left">
+      <li class="nav navbar-nav navbar-left">
          <%= link_to "Home", root_path %>
-        <%#= 'Login as:' current_user%>
-        <%= link_to "Logout", root_path %>
+        <%= 'Login as:'%>
+        <li><%= link_to "Logout", root_path%></li>
 
-
-            </ul>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Dashboard</a></li>
         <li><a href="#">Settings</a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="#">Profile
+          <!--<ul><%#= link_to "Logout", login_path %></ul>-->
+        </a></li>
         <li><a href="#">Help</a></li>
       </ul>
       <form class="navbar-form navbar-right">
