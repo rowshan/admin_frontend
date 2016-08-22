@@ -12,8 +12,10 @@
 
       <div class="well well-xs">
         <ul class="nav nav-pills nav-stacked">
+          <% if signed_in %>
 
-          <li><%=link_to "User Registration" %></li>
+
+        <li><%=link_to "User Registration", role_signup_new_path %></li>
           <li><a href="">Customer management</a></li>
           <li><a href="">Support</a></li>
           <li><a href="">Order management</a></li>
@@ -49,7 +51,7 @@
 
     </div>
     <!--<div class="clearfix hidden-lg hidden-md "></div>-->
-
+<%end%>
   </div>
 
 

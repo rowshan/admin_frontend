@@ -1,0 +1,29 @@
+<%#= render 'partials/user_sign_up' %>
+<% provide(:title, ' Sign up Form') %>
+<h1>User Registration Form</h1>
+
+<%= form_tag role_signup_path do |f|%>
+
+    <fieldset>
+      <div>
+        <div><%=  label_tag :email %><br />
+          <%= email_field_tag :login, params[:login], :placeholder => "Enter valid email" %></div>
+
+        <div><%= label_tag :password %><br />
+          <%= password_field_tag :password, params[:password], :placeholder => "Password" %></div>
+
+        <div><%= label_tag :password_confirmation %><br />
+          <%= password_field_tag :password_confirmation,params[:password_confirmation], :placeholder => "Comfirm Password" %></div>
+
+        <div><%= label_tag :role %><br />
+          <%= select_tag :role, options_for_select(['Super admin','Admin','Customer Support', 'Marketing','Shift Supervisor', 'Driver','Others', 'Select Roles'],'Select Roles') %>
+
+        </div>
+      </div>
+
+      <div>
+        <%= submit_tag "Sign up" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+<% end %>

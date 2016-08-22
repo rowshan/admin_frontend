@@ -28,11 +28,13 @@
               <%#= current_user.login %>
               <li><%= link_to "Profile" %></li>
               <li><%= link_to "Settings", '#' %></li>
+              <li><%=link_to " Dashboards", role_super_admin_dashboards_path %></li>
+              <li><%=link_to " Register user", role_signup_new_path %></li>
+
               <li><%= link_to "Log out", '/logout', method:"delete" %></li>
             </ul>
         <% else %>
             <li><%= link_to "Login", '/login' %></li>
-            <!--<li><%#=link_to "Signup", role_super_admin_dashboards_path %></li>-->
 
 
         <% end %>

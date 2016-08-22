@@ -25,7 +25,10 @@ Rails.application.routes.draw do
   #get 'signup' =>'new_role_super_admin_dashboard'
 
   namespace :role do
-    resources :super_admin_dashboards#, :only => [:create, :edit, :new, :update, :destroy, :show,index]
+    resources :super_admin_dashboards #, :only => [:create, :edit, :new, :update, :destroy, :show,index]
+    get  'signup_new',  to: 'super_admin_dashboards#new'
+    post  'signup',  to: 'super_admin_dashboards#create'
+
     resources :admin_dashboards
   end
 

@@ -4,20 +4,24 @@ class Role::SuperAdminDashboardsController < ApplicationController
 
   def new
     #create signup_form for new user
-    @user= ApiM8::Resources::Accounts::User.new
+   #@user= ApiM8::Resources::Accounts::User.new
+   # p @user
 
   end
 
-  def create
-    #user auth
-    #@user= ApiM8::Resources::Accounts::User.new(params[:login],params[:password],params[:confirmation])
-    @user= ApiM8::Resources::Accounts::User.new.create(params[:user])
-    debugger
-    if @user.save
 
-      redirect_to role_super_admin_dashboards_path @user.id
+  def show
+    @user=ApiM8::Resources::Accounts::User.new(params[:id])
+  end
+  def create
+    #@user= ApiM8::Resources::Accounts::User.new(params[:login],params[:password],params[:password_confirmation],params[:role])
+    @user= ApiM8::Resources::Accounts::User.new(user_params)   if ApiM8::Resources::Accounts::Role.new
+    #@user.ApiM8::Resources::Accounts::Role.new = 'super_admin'
+    if @user
+
+      redirect_to role_super_admin_dashboards_path, :notice=>' User has been created successfully!'
     else
-      render "new", :notice => 'User exists.Select another user name '
+      render "new", :notice => 'User exists.Select another user name.'
     end
 
 
@@ -26,7 +30,7 @@ class Role::SuperAdminDashboardsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:login, :password, :password_confirmation, :role_id, :tenant_id)
+    params.permit :id,:commit,:utf8, :authenticity_token, :login, :password, :password_confirmation,:role
   end
 
 

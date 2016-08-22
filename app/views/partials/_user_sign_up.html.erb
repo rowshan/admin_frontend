@@ -1,9 +1,9 @@
 
-<% if params[:controller]== 'role_super_admin_dashboards' %>
-<% provide(:title, 'User Signup Form') %>
+<%# if params[:controller]== 'role_super_admin_dashboard' %>
+<% provide(:title, ' Sign up Form') %>
 <h1>User Registration Form</h1>
 
-<%= form_tag role_super_admin_dashboards_path, :method => :post do |f| %>
+<%= form_tag role_signup_path do |f|%>
 
     <fieldset>
       <div>
@@ -28,4 +28,4 @@
     </fieldset>
 
 <% end %>
-<%end %>
+<%#end %>
