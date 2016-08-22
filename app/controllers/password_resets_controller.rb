@@ -18,26 +18,27 @@ class PasswordResetsController < ApplicationController
    def create
 
     @user = ApiM8::Resources::Accounts::User.new.password_forgotten(params[:login])
-    @user.password_reset(params[:password],params[:password_reset_token],params[:password_confirmation]) if puts @user.inspect
-    @user.activate(params[:activation_token])
+    #@user.password_reset(params[:password],params[:password_reset_token],params[:password_confirmation]) if puts @user.inspect
+    @user.send_password_reset if  @user
+    #@user.activate(params[:activation_token])
     redirect_to send_password_reset_url(@user.password_reset_token)
   end
 
   def edit
     @user = ApiM8::Resources::Accounts::User.new(params[:id]).password_reset_token!
     puts @user.inspect
-    if @user.nil?
-      redirect_to '/login', :alert => 'Password reset does not exist.'
-    elsif @user.password_reset_at < 2.hours.ago
-      redirect_to '/login ', :alert => "Password reset has expired."
-    end
+    # if @user.nil?
+    #   redirect_to '/login', :alert => 'Password reset does not exist.'
+    # elsif @user.password_reset_at < 2.hours.ago
+    #   redirect_to '/login ', :alert => "Password reset has expired."
+    # end
   end
 
 
   def update
     @user = ApiM8::Resources::Accounts::User.new(params[:id]).password_reset_token!
-    # if @user.password_reset_at < 2.hours.ago
-    #   redirect_to new_password_reset_path, :alert => "password reset has expired. "
+    if @user.password_reset_at < 2.hours.ago
+       redirect_to new_password_reset_path, :alert => "password reset has expired. "
     # elsif @user.update_attributes(@user)
     #   redirect_to root_url, :notice => "Password has been reset!"
     #
@@ -45,13 +46,13 @@ class PasswordResetsController < ApplicationController
     #   render "edit"
     # end
 
-    if @user.update_attributes(params[:login])
-      @user.reset_pass_token = nil
+    elsif @user.update_attributes(params[:login])
+      @user.password_reset_token = nil
       @user.save!
 
       if @user.valid?
         session[:user_id] = @user.id
-        redirect_to account_url, :notice => "Your password has been reset!"
+        redirect_to login_url, :notice => "Your password has been reset!"
       else
         render 'update'
       end
