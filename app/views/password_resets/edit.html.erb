@@ -1,7 +1,7 @@
 <% provide(:title, "Reset Password") %>
 
 <h1>Enter Your Password Information </h1>
-<%= form_tag(password_reset_path, method:"get", action: "update" ) do %>
+<%= form_tag(password_reset_path(params[:id]), method:"post", action: "update" ) do %>
 
     <fieldset>
       <div>
