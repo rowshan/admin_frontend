@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  helper_method :password_reset_token
+ # helper_method :password_reset_token
 
   def index
     if current_user

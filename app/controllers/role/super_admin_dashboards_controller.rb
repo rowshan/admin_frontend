@@ -14,6 +14,8 @@ class Role::SuperAdminDashboardsController < ApplicationController
     @user=ApiM8::Resources::Accounts::User.new(params[:id])
   end
   def create
+    p p=user_params
+
     #@user= ApiM8::Resources::Accounts::User.new(params[:login],params[:password],params[:password_confirmation],params[:role])
     @user= ApiM8::Resources::Accounts::User.new(user_params)   if ApiM8::Resources::Accounts::Role.new
     #@user.ApiM8::Resources::Accounts::Role.new = 'super_admin'
