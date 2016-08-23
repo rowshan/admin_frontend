@@ -23,15 +23,6 @@ class ApplicationController < ActionController::Base
     session[:current_user_id]=nil
   end
 
-  # def super_admin
-  #   current_user.ApiM8::Resources::Accounts::Role.new(name)
-  # end
-  def profile
-    if session[:signed_in]== true
 
-    else
-      redirect_to '/login'
-    end
-  end
 
 end

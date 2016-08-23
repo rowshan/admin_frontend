@@ -1,83 +1,91 @@
 class PasswordResetsController < ApplicationController
+  helper_method :password_reset_token
+
   def index
-    # if current_user
-    #   redirect_to my_accounts_url
-    # else
-    #   redirect_to '/login'
-    # end
+    if current_user
+      redirect_to root_url
+    else
+      redirect_to '/login'
+    end
   end
 
-  def show
-
-  end
+  # def show
+  #  # @user = ApiM8::Resources::Accounts::User.new.password_forgotten(params[:login]) # if @user
+  #
+  #
+  # end
 
 
   def new
+
   end
 
-   def create
+  def create
+    @user = ApiM8::Resources::Accounts::User.new.password_forgotten(params[:login]) # if @user
+    # p @user(
+    # @user.send(:password_reset,:password_reset_token,:password,:password_confirmation) #(params[:password_reset_token], params[:password], params[:password_confirmation]) if @user
+    @user.password_reset!
+    #@user.save
+    #logger.debug "New token: #{@user.attributes.inspect}"
 
-    @user = ApiM8::Resources::Accounts::User.new.password_forgotten(params[:login])
-    #@user.password_reset(params[:password],params[:password_reset_token],params[:password_confirmation]) if puts @user.inspect
-    @user.send_password_reset if  @user
-    #@user.activate(params[:activation_token])
-    redirect_to send_password_reset_url(@user.password_reset_token)
+    redirect_to edit_password_reset_url(id: @user.password_reset_token), :notice => 'Enter your new password'
+    p @user.password_reset_token
   end
 
   def edit
-    @user = ApiM8::Resources::Accounts::User.new(params[:id]).password_reset_token!
-    puts @user.inspect
-    # if @user.nil?
-    #   redirect_to '/login', :alert => 'Password reset does not exist.'
-    # elsif @user.password_reset_at < 2.hours.ago
+    # @user = ApiM8::Resources::Accounts::User.new(params[:id]).password_reset!
+    # puts @user.inspect
+    # #  if @user
+    # #   redirect_to '/login', :alert => 'Password reset does not exist.'
+    #  @user.password_reset_at < 2.hours.ago
     #   redirect_to '/login ', :alert => "Password reset has expired."
-    # end
+    # # end
+    #  end
   end
 
 
   def update
-    @user = ApiM8::Resources::Accounts::User.new(params[:id]).password_reset_token!
-    if @user.password_reset_at < 2.hours.ago
-       redirect_to new_password_reset_path, :alert => "password reset has expired. "
-    # elsif @user.update_attributes(@user)
-    #   redirect_to root_url, :notice => "Password has been reset!"
+    @user = ApiM8::Resources::Accounts::User.new(params[:id]) if @user
+    # @user = ApiM8::Resources::Accounts::User.new #password_reset(params[:password_reset_token], params[:password], params[:password_confirmation])
+    # if params[:password] == nil #password_reset.nil?(:password)
+    #   @user.errors.add(:password, 'can not be empty')
     #
-    # else
     #   render "edit"
-    # end
 
-    elsif @user.update_attributes(params[:login])
-      @user.password_reset_token = nil
-      @user.save!
 
+    #@user.update_attributes(params[:password_reset_token],params[:password], params[:password_confirmation])
+     @user.update_attributes!(password_reset_params)
+      # @user.password_reset_token = nil
+      # @user.save!
+      #
       if @user.valid?
-        session[:user_id] = @user.id
-        redirect_to login_url, :notice => "Your password has been reset!"
-      else
-        render 'update'
-      end
-
+      session[:current_user_id] = @user.id
+      flash[:success] = "Passsword has been reset. "
+      redirect_to @user
     else
-      flash.now[:error] = @user.errors.full_messages
-      render :action => "edit"
+      render 'edit'
     end
+
+    # else
+    #   flash.now[:error] = @user.errors.full_messages
+    #   render :action => "edit"
+    # end
   end
 
-  def destroy
+
+  # @user=password_reset(params[:password_reset_token], params[:password], params[:password_confirmation])
+  # p @user
+  # if @user
+  #   redirect_to root_url,  :notice => 'Please fill the form!'
+  #   puts @user.password_reset_token
+  # else
+  #   render 'new', :alert => 'User does not match!'
+  # end
+
+  def password_reset_params
+    params.permit(:password, :password_confirmation)
+
   end
 
 
-  #private
-  # def get_user
-  #   @user = ApiM8::Resources::Accounts::User.new
-  #   @user = User.find_by(login: params[:login])
-  # end
-  #
-  # #Confirms a valid user.
-  # def valid_user
-  #   @user = ApiM8::Resources::Accounts::User.new
-  #   unless(@user && @user.activate(2.seconds.ago) )
-  #     redirect_to root_url
-  #   end
-  # end
 end
