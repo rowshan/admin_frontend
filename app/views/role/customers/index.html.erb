@@ -1,17 +1,13 @@
-<h1>Welcome to Jonny Fresh Customer Management</h1>
+<h1>Customer Management</h1>
 
-<table>
-  <tr>
-    <th>View all Customer </th>
-    <th>Edit Customer</th>
-    <th> </th>
-    <th></th>
-    <th></th>
-  </tr>
 
-</table>
-<%= render 'partials/customer_support' %>
+<div>
 
-<br>
 
-<%= link_to "Create New Category", new_role_customer_path %>
+        <%= render 'customer_side_nav' %>
+        <%= render 'partials/customer_support' %>
+
+</div>
+            <br>
+
+        <%= link_to "Create New Category", new_role_customer_path %>

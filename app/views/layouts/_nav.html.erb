@@ -23,9 +23,13 @@
         <li><%= link_to "Help", '#' %></li>
 
 
+
+
+
+
+
         <% if signed_in %>
             <ul class="nav navbar-nav">
-              <%#= current_user.login %>
               <li><%= link_to "Profile" %></li>
               <li><%= link_to "Settings", '#' %></li>
               <li><%=link_to " Dashboards", role_super_admin_dashboards_path %></li>
@@ -34,6 +38,11 @@
               <li><%= link_to "Log out", '/logout', method:"delete" %></li>
             </ul>
         <% else %>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#portfolio">PORTFOLIO</a></li>
+            <li><a href="#pricing">PRICING</a></li>
+            <li><a href="#contact">CONTACT</a></li>
             <li><%= link_to "Login", '/login' %></li>
 
 
@@ -41,15 +50,13 @@
         </ul>
         </div>
 
-
-    <!--</div>-->
     </ul>
-    <form class="navbar-form navbar-right" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search">
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+    <!--<form class="navbar-form navbar-right" role="search">-->
+      <!--<div class="form-group">-->
+        <!--<input type="text" class="form-control" placeholder="Search">-->
+      <!--</div>-->
+      <!--<button type="submit" class="btn btn-default">Submit</button>-->
+    <!--</form>-->
 
   </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

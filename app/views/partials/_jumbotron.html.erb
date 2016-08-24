@@ -1,6 +1,11 @@
 <% if params[:controller]== 'home'%>
-<div class="jumbotron text-center">
-  <h1>Welcome to Jonnyfresh Admin Website</h1>
-  <p class="uppercase">Your dry Cleaning and Lanundry!</p>
-</div>
+
+    <div class="jumbotron text-center">
+      <h1>Welcome to Jonnyfresh Admin</h1>
+      <p>Your dry Cleaning and Lanundry!</p>
+      <form class="form-inline">
+        <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+        <button type="button" class="btn btn-danger">Subscribe</button>
+      </form>
+    </div>
 <%end%>
