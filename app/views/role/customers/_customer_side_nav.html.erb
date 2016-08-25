@@ -1,34 +1,27 @@
-
 <div class="row">
   <!--<div class="span2">-->
   <!--sidebar-->
-  <div class="clearfix hidden-lg hidden-md "></div>
+<div class="clearfix hidden-lg hidden-md "></div>
 
-  <div class="col-xs-6 col-lg-2 col-sm-6 col-md-2">
+<div class="col-xs-6 col-lg-2 col-sm-6 col-md-2">
 
-    <div class="well well-xs">
-      <ul class="nav nav-pills nav-stacked nav-responsive" >
-        <% if signed_in %>
-
-
-            <li><%= link_to "View Customer's Product Information", role_customers_path %></li>
-            <li><a href=""> Edit Customer</a></li>
-            <li><a href="">View all Product</a></li>
-            <li><a href="">Edit Product</a></li>
-
+  <div class="well well-xs">
+    <ul class="nav nav-pills nav-stacked nav-responsive">
+      <% if signed_in %>
+          <li><%= link_to "View Customer's Product Information", role_customers_path %></li>
+          <li><a href=""> Edit Customer</a></li>
+          <li><a href="">View all Product</a></li>
+          <li><a href="">Edit Product</a></li>
+          </ul>
 
 
+          <!--</div> &lt;!&ndash;   end of sidebar&ndash;&gt;-->
+          </div>
+          </div>
+          <%= render 'partials/customer_support' %>
+      <% end %>
+      </div>
 
-            </ul>
+      </div>
 
 
-            <!--</div> &lt;!&ndash;   end of sidebar&ndash;&gt;-->
-            </div>
-            </div>
-            <%= render 'partials/customer_support' %>
-
-            </div>
-
-            </div>
-
-        <%end%>

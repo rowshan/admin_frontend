@@ -1,4 +1,5 @@
 <% provide(:title, "Reset password") %>
+
 <h1>Forgot password</h1>
 
 <div class="row">
@@ -8,7 +9,7 @@
         <fieldset>
 
           <%= label_tag :Email %>
-          <%= text_field_tag :login, params[:login], class: 'form-control',placeholder: "Please enter your email address" %>
+          <%= text_field_tag :login, params[:login], class: 'form-control', placeholder: "Please enter your email address" %>
 
           <div class="actions">
             <%= submit_tag "password reset", class: "btn btn-primary" %>
