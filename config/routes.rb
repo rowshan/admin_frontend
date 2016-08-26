@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   resources :time_window_managements
   resources :postal_managements
   resources :cities_managements
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :plant_managements
   resources :orders
+  resources :invoices
 
   # resources :homes
   get 'home/index' => 'home/index'
