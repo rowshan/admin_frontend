@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="clearfix hidden-lg hidden-md "></div>
+  <!--<div class="clearfix hidden-lg hidden-md "></div>-->
 
   <div class="row">
     <!--<div class="span2">-->
@@ -9,16 +9,21 @@
     <div class="col-xs-6 col-lg-2 col-sm-6 col-md-2">
 
       <div class="well well-xs">
-        <ul class="sidenav">
+        <ul id="mySidenav" class="sidenav">
+          <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
           <% if signed_in %>
               <li><%= link_to "User Registration", role_signup_new_path %></li>
               <li><%= link_to "Customer Management", role_customers_path %></li>
               <li><a href="">Support</a></li>
-              <li><a href="">Order management</a></li>
+              <li><%= link_to "Order Management", orders_path %></li>
               <li><a href="">Invoice</a></li>
-              <li><a href="">Plants management</a></li>
-              <li><a href="">Drivers management</a></li>
-              <li><a href="">Countries management</a></li>
+              <li><%= link_to "Plant Management", plant_managements_path %></li>
+              <li><%= link_to "Driver Management", driver_managements_path %></li>
+              <li><%= link_to "Country Management", country_managements_path %></li>
+              <li><%= link_to "Province Management", province_managements_path %></li>
+              <li><%= link_to "Cities Management", cities_managements_path %></li>
+              <li><%= link_to "Postalcode Management", postal_managements_path %></li>
+              <li><%= link_to "Timewindow Management", time_window_managements_path %></li>
               </ul>
 
               <!--</div> &lt;!&ndash;   end of sidebar&ndash;&gt;-->
@@ -199,7 +204,7 @@
                             <th>Order #</th>
                             <th>Order Date</th>
                             <th>Order Time</th>
-                            <th>Amount (USD)</th>
+                            <th>Amount (Euro)</th>
                           </tr>
                           </thead>
                           <tbody>

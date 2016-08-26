@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
 
 
+  resources :time_window_managements
+  resources :postal_managements
+  resources :cities_managements
+  resources :country_managements
+  resources :province_managements
+  resources :driver_managements
 
+  resources :plant_managements
+  resources :orders
 
   # resources :homes
   get 'home/index' => 'home/index'
