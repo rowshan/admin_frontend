@@ -1,47 +1,25 @@
-<div class="row">
-  <!--<div class="span2">-->
-  <!--sidebar-->
-<div class="clearfix hidden-lg hidden-md "></div>
 
-<div class="col-xs-6 col-lg-2 col-sm-6 col-md-2">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+<!--<div class="clearfix hidden-lg hidden-md "></div>-->
 
-  <ul id="mySidenav" class="sidenav">
-      <% if signed_in %>
-          <li><%= link_to "View Customer's Product Information", role_customers_path %></li>
-          <li><a href=""> Edit Customer</a></li>
-          <li><a href="">View all Product</a></li>
-          <li><a href="">Edit Product</a></li>
+<!--<div class="col-xs-6 col-lg-2 col-sm-6 col-md-2">-->
+  <div id="main">
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+    <ul >
+          <li><a href="#" class="customer-info">Customer Info</a></li> <%#= link_to "Customer Info", role_customers_path %>
+          <li><a href="#" class="default-view"> <%= link_to "Edit Customer Info", edit_role_customer_path(current_user) %></a></li>
+          <li><a href="#">View all Product</a></li>
+          <li><a href="#">Edit Product</a></li>
           </ul>
 
 
           <!--</div> &lt;!&ndash;   end of sidebar&ndash;&gt;-->
           </div>
           </div>
-          <%= render 'partials/customer_support' %>
-      <% end %>
       </div>
 
       </div>
 
 
-<ul class="navigation">
-  <li class="nav-item"><a href="#">Home</a></li>
-  <li class="nav-item"><a href="#">Portfolio</a></li>
-  <li class="nav-item"><a href="#">About</a></li>
-  <li class="nav-item"><a href="#">Blog</a></li>
-  <li class="nav-item"><a href="#">Contact</a></li>
-</ul>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger"></label>
-
-<div class="site-wrap">
-  <!-- insert the rest of your page markup here -->
-</div>
-
-
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger"></label>
 

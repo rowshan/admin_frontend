@@ -1,0 +1,38 @@
+
+
+<!--table responsive and  scrolls horizontally-->
+
+<div class="table-responsive"  id="customer-info" >
+  <div class="container">
+    <h2>Table</h2>
+    <p>The .table-hover class enables a hover state on table rows within a tbody:</p>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name </th>
+        <th>DOB</th>
+        <th>Country</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <%# for profile in @profiles %>
+
+      <tr>
+        <td>1</td>
+        <td>Anna</td>
+        <td><%#=h profile.first_name %></td>
+        <td><%#=h profile.last_name %></td>
+        <td><%#=h profile.date_of_birth %></td>
+        <td><%#=h profile.country_of_residence %></td>
+        <td><%#= link_to 'Show', role_customer %></td>
+        <td><%#= link_to 'Edit', edit_role_customer_path(role_customer) %></td>
+
+
+        <%#end%>
+      </tbody>
+    </table>
+  </div>
+</div>

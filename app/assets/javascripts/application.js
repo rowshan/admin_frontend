@@ -67,3 +67,32 @@ function closeNav() {
     document.body.style.backgroundColor = "white";
 }
 
+
+
+
+//show the customer info table on click: customer info from side navbar
+
+// $(document).ready(function()
+// {
+//     $("ul#cust-info").click(function()
+//     {
+//         $("#customer-info").toggle();
+//     });
+// });
+
+$("div").hide();
+// Show chosen div, and hide all others
+$("a").click(function (e)
+{
+    //e.preventDefault();
+    $("#" + $(this).attr("class")).show().siblings('div').hide();
+});
+
+// //
+// $("div").hide();
+// // Show chosen div, and hide all others
+// $("a").click(function (e)
+// {
+//     //e.preventDefault();
+//     $("#" + $(this).attr("class")).show().siblings('div').hide();
+// });

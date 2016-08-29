@@ -1,6 +1,11 @@
 class Role::CustomersController < ApplicationController
   def index
-    # @categories= ApiM8::Resources::Shop::Category.all
+    @profiles= ApiM8::Resources::Accounts::Profile.new.all
+    # @products= ApiM8::Resources::Shop::Product.new.all
+    # puts @products
+   # redirect_to @products
+   #render :json=>@products.to_json
+    render
   end
 
   def show
@@ -11,12 +16,6 @@ class Role::CustomersController < ApplicationController
   end
 
   def create
-     @categories= ApiM8::Resources::Shop::Category.new.localized_categories
-    if @categories
-      redirect_to @categories
-    else
-      render "index"
-    end
 
 
   end
