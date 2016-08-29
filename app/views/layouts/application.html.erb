@@ -3,10 +3,13 @@
 <head>
   <title>AdminWebapp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "My Application" %></title>
+  <!--<title><%#= content_for?(:title) ? yield(:title) : "My Application" %></title>-->
   <!--#<meta name="description" content="<%#= content_for?(:description) ? yield(:description) : "Learn Rails" %>">-->
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <%= csrf_meta_tags %>
 </head>
 

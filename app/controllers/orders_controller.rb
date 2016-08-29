@@ -1,5 +1,14 @@
 class OrdersController < ApplicationController
   def index
+    @orders=ApiM8::Resources::Books::Order.new.all
+    puts @orders
+    respond_to do |format|
+      format.html
+      format.json
+      #render :json=>@orders.to_json
+
+    end
+
   end
 
   def show

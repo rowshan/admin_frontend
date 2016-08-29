@@ -3,14 +3,12 @@
 
 <div class="table-responsive">
   <div class="container">
-    <h2>Table</h2>
-    <p>The .table-hover class enables a hover state on table rows within a tbody:</p>
+    <h2>Orders</h2>
     <table class="table table-hover">
       <thead>
       <tr>
         <th>#</th>
-        <th>Ordered Number</th>
-        <th> Order ID</th>
+        <th> Invoice ID</th>
         <th>.....</th>
         <th>city</th>
         <th>country</th>
@@ -18,8 +16,13 @@
       </tr>
       </thead>
       <tbody>
+
+
+
+
+      <%#= @orders.each do|order| %>
       <tr>
-        <td>1</td>
+        <td><%=link_to(order.invoice_id , order)%></td>
         <td>ddd</td>
       </tr>
       <tr>
@@ -30,6 +33,7 @@
         <td>3</td>
         <td>John</td>
       </tr>
+          <%#end%>
       </tbody>
     </table>
   </div>
