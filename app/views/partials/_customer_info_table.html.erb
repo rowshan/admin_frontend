@@ -14,7 +14,7 @@
         <th>Last Name </th>
         <th>DOB</th>
         <th>Country</th>
-        <th></th>
+        <th>Profile</th>
       </tr>
       </thead>
       <tbody>
@@ -23,12 +23,12 @@
       <tr>
         <td>1</td>
         <td>Anna</td>
-        <td><%#=h profile.first_name %></td>
-        <td><%#=h profile.last_name %></td>
+        <!--<td><%#=h profile.first_name %></td>-->
+        <!--<td><%#=h profile.last_name %></td>-->
         <td><%#=h profile.date_of_birth %></td>
         <td><%#=h profile.country_of_residence %></td>
         <td><%#= link_to 'Show', role_customer %></td>
-        <td><%#= link_to 'Edit', edit_role_customer_path(role_customer) %></td>
+        <td><%= link_to 'Edit', edit_role_customer_path(current_user)  %></td>
 
 
         <%#end%>
