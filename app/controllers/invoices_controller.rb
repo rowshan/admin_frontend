@@ -1,5 +1,7 @@
 class InvoicesController < ApplicationController
   def index
+   # @invoices= ApiM8::Resources::Books::Invoice.new.items
+
   end
 
   def show

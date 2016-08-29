@@ -1,8 +1,17 @@
 <%#= render 'partials/dashboard_nav'%>
-<%#= render 'partials/user_sign_up'%>
+
+
+<div  id="main">
+  <a class="sidenav-toggle-btn">
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span></a>
+</div>
+<h2>Super Admin Dashboard!</h2>
+<%= render 'body_dashboard' %>
+
+<%= render 'nav_dash_board'%>
+
 <%#if @_current_user %>
 
 <%#end%>
-<%= render 'body_dashboard' %>
 <%#= render 'nav_dash_board' %>
 
