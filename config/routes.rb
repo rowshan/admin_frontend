@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :time_window_managements
   resources :postal_managements
-  resources :cities_managements
+  resources :city_managements
   resources :country_managements
   resources :province_managements
   resources :driver_managements

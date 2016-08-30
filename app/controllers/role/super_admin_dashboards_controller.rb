@@ -9,16 +9,17 @@ class Role::SuperAdminDashboardsController < ApplicationController
 
   end
 
-
   def show
     @user=ApiM8::Resources::Accounts::User.new(params[:id])
   end
+
   def create
     p p=user_params
 
     #@user= ApiM8::Resources::Accounts::User.new(params[:login],params[:password],params[:password_confirmation],params[:role])
-    @user= ApiM8::Resources::Accounts::User.new(user_params)   if ApiM8::Resources::Accounts::Role.new
+    @user= ApiM8::Resources::Accounts::User.new(user_params)  # if ApiM8::Resources::Accounts::Role.new
     #@user.ApiM8::Resources::Accounts::Role.new = 'super_admin'
+    #session[:current_user_id]=@user.id
     if @user
 
       redirect_to role_super_admin_dashboards_path, :notice=>' User has been created successfully!'

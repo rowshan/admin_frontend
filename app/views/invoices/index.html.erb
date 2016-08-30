@@ -1,6 +1,12 @@
-<h1>Invoices#index</h1>
-<p>Find me in app/views/invoices/index.html.erb</p>
 
 <%#= @invoices.each |invoice|%>
 
 <%#end%>
+
+<!--<div class="clearfix hidden-lg hidden-md "></div>-->
+<a class="sidenav-toggle-btn">
+  <span  style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</a>
+
+<%= render 'invoices/invoices_side_nav' %>
+
