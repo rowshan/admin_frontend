@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :schedule_managements
   resources :trip_managements
   resources :shift_managements
   resources :time_window_managements
