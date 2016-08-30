@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
 
 
+  get 'trip_managements/index'
+
+  get 'trip_managements/show'
+
+  get 'trip_managements/new'
+
+  get 'trip_managements/edit'
+
+  get 'trip_managements/create'
+
+  get 'trip_managements/update'
+
+  get 'trip_managements/destroy'
+
   resources :shift_managements
   resources :time_window_managements
   resources :postal_managements
