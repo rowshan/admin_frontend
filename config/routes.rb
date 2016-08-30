@@ -2,6 +2,20 @@ Rails.application.routes.draw do
 
 
 
+  get 'shift_managements/index'
+
+  get 'shift_managements/show'
+
+  get 'shift_managements/new'
+
+  get 'shift_managements/edit'
+
+  get 'shift_managements/create'
+
+  get 'shift_managements/update'
+
+  get 'shift_managements/destroy'
+
   resources :time_window_managements
   resources :postal_managements
   resources :city_managements
