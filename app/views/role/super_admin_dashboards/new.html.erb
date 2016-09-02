@@ -2,7 +2,7 @@
 <% provide(:title, ' Sign up Form') %>
 <h1>User Registration Form</h1>
 
-<%= form_tag role_super_admin_dashboards_path, method: "get" do |f|%>
+<%= form_tag role_super_admin_dashboards_path do |f|%>
 
     <fieldset>
       <div>
@@ -16,7 +16,14 @@
           <%= password_field_tag :password_confirmation,params[:password_confirmation], :placeholder => "Comfirm Password" %></div>
 
         <div><%= label_tag :role %><br />
-          <%= select_tag :role, options_for_select(['Super admin','Admin','Customer Support', 'Marketing','Shift Supervisor', 'Driver','Others', 'Select Roles'],'Select Roles') %>
+          <%#= select(:role, @role.all.collect{|r|[r.id,r.name]}) %>
+
+
+
+          <%= select_tag :name,options_for_select(['Super admin','Admin','Customer Support', 'Marketing','Shift Supervisor', 'Driver','Others', 'Select Roles']) %>
+         <%#= select_tag(:role_id, options_for_select([['Super Admin',:id],['Customer',:id], ['Customer Support',:id],['Operator',:id],['Marketing',:id],['Shift Supervisor',:id], ['Driver',:id],['Others']],8))%>
+          <!--map{|r| [r.id,r.name]})-->
+
 
         </div>
       </div>

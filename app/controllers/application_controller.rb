@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   #include SessionsHelper
   helper_method :current_user, :signed_in, :signed_out
 
-
+  # before_filter do
+  #   @tenant = ApiM8::Resources::Tenant.current = ApiM8::Resources::Tenant.current_user!(request.current_user)
+  # end
   protected
   #
   # # Finds the User with the ID stored in the session with the key

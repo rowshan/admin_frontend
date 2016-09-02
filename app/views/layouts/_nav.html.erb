@@ -28,7 +28,7 @@
               <li><%= link_to "Profile" %></li>
               <li><%= link_to "Settings", '#' %></li>
               <li><%=link_to " Dashboards", role_super_admin_dashboards_path %></li>
-              <li><%=link_to " Register user", role_signup_new_path %></li>
+              <li><%=link_to " Register user", new_role_super_admin_dashboard_path %></li>
               <li><%= link_to "Log out", '/logout', method:"delete" %></li>
             </ul>
         <% else %>

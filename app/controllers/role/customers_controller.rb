@@ -17,12 +17,13 @@ class Role::CustomersController < ApplicationController
 
   def create
 
-
   end
 
   def destroy
   end
 
   def update
+    @profiles= ApiM8::Resources::Accounts::Profile.new.profile
+
   end
 end

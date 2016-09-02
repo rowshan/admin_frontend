@@ -3,8 +3,8 @@
     <ul>
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
-      <%# if signed_in %>
-      <li><%= link_to "User Registration", role_signup_new_path %></li>
+      <% if signed_in %>
+      <li><%= link_to "User Registration", new_role_super_admin_dashboard_path %></li>
       <li><%= link_to "Customer Management", role_customers_path %></li>
       <li><%= link_to " Invoices", invoices_path %></li>
       <li><%= link_to "Order Management", orders_path %></li>
@@ -19,7 +19,7 @@
       <li><%= link_to "Trips Management", trip_managements_path %></li>
       <li><%= link_to "Schedule Management", schedule_managements_path %></li>
     </ul>
-
+    <%end%>
     <!--</div> &lt;!&ndash;   end of sidebar&ndash;&gt;-->
   </div>
 </div>

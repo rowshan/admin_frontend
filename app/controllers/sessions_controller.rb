@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   def create
     user=ApiM8::Resources::Accounts::User.new
     user=user.login(params[:login], params[:password])
+    puts user.current_user
 
     if user
       session[:current_user_id]=user.id

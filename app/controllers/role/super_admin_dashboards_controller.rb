@@ -1,4 +1,5 @@
 class Role::SuperAdminDashboardsController < ApplicationController
+
   def index
   end
 
@@ -14,18 +15,43 @@ class Role::SuperAdminDashboardsController < ApplicationController
   end
 
   def create
-    p p=user_params
+    # p p=user_params
+    @hash= ApiM8::Resources::Accounts::Role.new nil,nil,{:name=>params[:name]}.to_h
+    #hash=role.fetch_values(:name, :id)
+    @hash.save
+    #puts @hash.map(&:name)
+    #puts @hash.list
+   # role.select{}
+    #role.save
 
-    #@user= ApiM8::Resources::Accounts::User.new(params[:login],params[:password],params[:password_confirmation],params[:role])
-    @user= ApiM8::Resources::Accounts::User.new(user_params)  # if ApiM8::Resources::Accounts::Role.new
-    #@user.ApiM8::Resources::Accounts::Role.new = 'super_admin'
-    #session[:current_user_id]=@user.id
+     ro= ApiM8::Resources::Accounts::Role.new nil,nil
+     old_role=ro.list.map{|x| [x.id, x.name]}
+    #
+    #
+    # #if role.exists?
+     puts old_role
+
+     #user=ApiM8::Resources::Accounts::User.new
+
+    tenant= ApiM8::Resources::Tenant.new.id
+    @user= ApiM8::Resources::Accounts::User.new nil, nil, {login: params[:login],
+                                                           password: params[:password],
+                                                           password_confirmation: params[:password_confirmation],
+                                                           role_id: @hash.id, tenant_id:tenant}
+    puts @user
+     #   puts @user.errors
+
+     #session[:current_user_id]=@user.id
+
     if @user
-
-      redirect_to role_super_admin_dashboards_path, :notice=>' User has been created successfully!'
+    redirect_to root_path, :notice=>' User has been created successfully!'
     else
-      render "new", :notice => 'User exists.Select another user name.'
+      render "new", :notice => 'Invalid  Signup!'
     end
+
+    end
+
+  def update
 
 
   end
@@ -33,8 +59,32 @@ class Role::SuperAdminDashboardsController < ApplicationController
 
   private
   def user_params
-    params.permit :id,:commit,:utf8, :authenticity_token, :login, :password, :password_confirmation,:role
+   # params.require(:user).permit(:id,:user, :login, :password, :password_confirmation,:role_id=>[])
+    params.permit(:id,:login, :password, :password_confirmation,:role_id,:name, :tenant_id)
   end
 
+  def role_params
+    params.permit(:id, :name)
 
+  end
+
+  # def tenant
+  #   user=ApiM8::Resources::Accounts::User.new#(id: session[:current_user_id])
+  #
+  #   if signed_in
+  #
+  #     ApiM8::Resources::Tenant.new.id=user.id
+  #   end
+  #
+  # end
 end
+#
+#  @role=ApiM8::Resources::Accounts::Role.new nil,nil.list
+# # @role=@role.map{|x| [x.id, x.name]}
+#  print @role
+#@user= ApiM8::Resources::Accounts::User.create(nil,nil,params[:login],params[:password],params[:password_confirmation],:role_id => {})
+# @user= ApiM8::Resources::Accounts::User.new(nil,nil,user_params)  if role #ApiM8::Resources::Accounts::Role.new(nil,nil).list.map{|x| [x.id, x.name]}
+#puts @user
+#puts @user.errors
+#session[:current_user_id]=@user.id
+#if @user

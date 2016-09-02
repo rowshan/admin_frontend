@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :invoices
 
   # resources :homes
-  get 'home/index' => 'home/index'
+  #get 'home/index' => 'home/index'
   root to: 'home#index'
 
   resources :password_resets, :only => [:create, :edit, :new, :update]
@@ -41,8 +41,8 @@ Rails.application.routes.draw do
 
   namespace :role do
     resources :super_admin_dashboards #, :only => [:create, :edit, :new, :update, :destroy, :show,:index]
-    get  'signup_new',  to: 'super_admin_dashboards#new'
-    post  'signup',  to: 'super_admin_dashboards#create'
+    # get  'signup_new',  to: 'super_admin_dashboards#new', as: signup_new
+    #post  'signup',  to: 'super_admin_dashboards#create'
 
     resources :admin_dashboards
     resources :customers, :only => [:create, :edit, :new, :update, :destroy, :show,:index]
