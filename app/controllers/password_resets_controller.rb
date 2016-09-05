@@ -29,11 +29,11 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    @user = ApiM8::Resources::Accounts::User.new nil, nil, {:id => params[:id], :password => params[:password],
-                                                            :password_confirmation => params[:password_confirmation]}
+    @user = ApiM8::Resources::Accounts::User.new nil, nil, {:id => params[:id]}#, :password => params[:password],
+                                                            #:password_confirmation => params[:password_confirmation]}
     puts @user
     if @user.save!
-      @user.password_reset(params[:password], params[:password_confirmation],:password_reset_token=>nil)
+      @user.password_reset(params[:password], params[:password_confirmation],:password_reset_token=>params[:password_reset_token])
 
       @user.update_attributes(user_params)
 
