@@ -8,11 +8,9 @@ class PasswordResetsController < ApplicationController
     end
   end
 
-  # def show
-  #  # @user = ApiM8::Resources::Accounts::User.new.password_forgotten(params[:login]) # if @user
-  #
-  #
-  # end
+  def show
+
+  end
 
 
   def new
@@ -20,39 +18,37 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    user = ApiM8::Resources::Accounts::User.new
-    @user=user.password_forgotten(params[:login]) # if @user
-   #  @user.password_reset(params[:password_reset_token], params[:password], params[:password_confirmation])
-
-    @user.password_reset! if @user
+    @user = ApiM8::Resources::Accounts::User.new.password_forgotten(params[:login])
+    @user.password_reset(params[:password_reset_token], params[:password], params[:password_confirmation]) if @user.save!
 
     redirect_to edit_password_reset_url(id: @user.password_reset_token), :notice => 'Enter your new password'
-    p @user.password_reset_token
   end
 
   def edit
 
   end
 
-
   def update
-    @user = ApiM8::Resources::Accounts::User.new(params[:id]).password_reset!
-    if @user
-    @user.update_attributes(params[:password],params[:password_confirmation])   #(password_reset_params)
-      #session[:current_user_id] = @user.id
-      flash[:success] = "Passsword has been reset. "
+    @user = ApiM8::Resources::Accounts::User.new nil, nil, {:id => params[:id], :password => params[:password],
+                                                            :password_confirmation => params[:password_confirmation]}
+    puts @user
+    if @user.save!
+      @user.password_reset(params[:password], params[:password_confirmation],:password_reset_token=>nil)
+
+      @user.update_attributes(user_params)
+
+      #@user.update_attributes(params[:password])
+      flash[:success] = "Passsword has been changed. "
       redirect_to root_url
     else
       render 'edit'
     end
 
   end
-  # private
-  # def password_reset_params
-  #   params.permit(:password, :password_confirmation)
-  #
-  # end
 
+  private
+  def user_params
+    params.permit(:id, :login, :password, :password_confirmation, :role_id, :name, :tenant_id)
+  end
+  end
 
-
-end
