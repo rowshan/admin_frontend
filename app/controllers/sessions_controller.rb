@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   # DELETE /sessions/1
   # DELETE /sessions/1.json
   def destroy
-    signed_out
+    sign_out
     redirect_to login_url, alert: "Successfully logged out"
   end
 
