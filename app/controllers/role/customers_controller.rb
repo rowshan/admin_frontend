@@ -42,12 +42,19 @@ class Role::CustomersController < ApplicationController
 
   end
 
+  def update
+    # @profiles= ApiM8::Resources::Accounts::Profile.new.profile
+    @profiles=@profiles.find(params[:id])
+    if @profiles.update(@profiles)
+
+      redirect_to role_customers_path
+    end
+
+  end
+
   def destroy
     #respond_with @profile.find(params[:id]) .soft_delete
   end
 
-  def update
-   # @profiles= ApiM8::Resources::Accounts::Profile.new.profile
 
-  end
 end
