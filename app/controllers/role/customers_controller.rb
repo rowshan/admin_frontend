@@ -3,17 +3,11 @@ class Role::CustomersController < ApplicationController
     # @profiles= ApiM8::Resources::Accounts::Profile.new nil,nil
     #list=@profiles.list.map{|e|[e.id,e.user_id,e.first_name,e.last_name,e.date_of_birth,e.country_of_residence]}
     #hash=eval(list)
-    # profiles=Hash.new
-    #
-    # profiles[:first_name]="Anne"
-    # profiles[:last_name]='Marry'
-    # profiles[:date_of_birth]= '01.01.1970'
-    # profiles[:country_of_residence]='Germany'
 
 
     #generate a hash here
     @profiles={
-        :id=> 1,
+        :id=>session[:current_user_id],
         :first_name=>"Anne",
         :last_name=>"Marry",
         :date_of_birth=>'01.01.1970',
@@ -22,15 +16,12 @@ class Role::CustomersController < ApplicationController
 
 
 
-    #puts profiles
-    #list=profiles.map{|e | [e.first_name,e.las]}
-    #puts list
     #render json: @profiles
   end
 
   def show
-    @profile=@profiles.find(@profiles[:id])
-
+   # @profile=@profiles.find(@profiles[:id])
+    #respond_with(@profile)
   end
 
   def edit
@@ -46,16 +37,17 @@ class Role::CustomersController < ApplicationController
    if @profiles.save
      redirected_to role_customers_path, :alert=>"profile has been created successfully!"
    else
-     render "new"
+     render "new" ,:alert=>"Create a new user please!"
    end
 
   end
 
   def destroy
+    #respond_with @profile.find(params[:id]) .soft_delete
   end
 
   def update
-    @profiles= ApiM8::Resources::Accounts::Profile.new.profile
+   # @profiles= ApiM8::Resources::Accounts::Profile.new.profile
 
   end
 end
