@@ -1,5 +1,7 @@
 class PlantManagementsController < ApplicationController
   def index
+    @plants=ApiM8::Resources::Logistic::Profile.new nil,nil
+
   end
 
   def show
