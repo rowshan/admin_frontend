@@ -1,55 +1,13 @@
 
 <!--table responsive and  scrolls horizontally-->
 
-<!--<div class="table-responsive">-->
-<!--<div class="container">-->
-<!--<h2>Orders</h2>-->
-<!--<table class="table table-hover">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th>#</th>-->
-<!--<th> Invoice ID</th>-->
-<!--<th>.....</th>-->
-<!--<th>city</th>-->
-<!--<th>country</th>-->
-<!--<th></th>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-
-
-
-
-<!--<%#= @orders.each do|order| %>-->
-<!--<tr>-->
-<!--<td><%#=link_to(order.invoice_id , order)%></td>-->
-<!--<td>ddd</td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td>3</td>-->
-<!--<td>Debbie</td>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<td>3</td>-->
-<!--<td>John</td>-->
-<!--</tr>-->
-<!--<%#end%>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="col-lg-4">-->
-<!--<div class="panel panel-default">-->
-<!--<div class="panel-heading">-->
-<!--<h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>-->
-<!--</div>-->
 
 <div class="panel-body">
   <div class="table-responsive">
     <table class="table table-bordered table-hover table-striped">
       <thead>
       <tr>
+
         <th>Invoice Id #</th>
         <th>Invoice Date</th>
         <th>Invoice No.</th>
@@ -58,67 +16,22 @@
         <th>Total Amount</th>
         <th>Tenant_id</th>
         <th></th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
 
-      <tbody>
-      <!--<%#= @orders.each do|order| %>-->
+      <tr>
+        <% @invoices.each do |key, value| %>
+            <td><%=  "#{value}" %></td>
+        <% end %>
 
-      <tr>
-        <!--<td><%#=link_to(order.invoice_id , order)%></td>-->
+        <td><%= link_to "Show", invoice_path(@invoices[:id]) %></td>
+        <td><%= link_to "Edit", edit_invoice_path(@invoices[:id]) %></td>
+        <td><%= link_to "Remove",invoice_path(@invoices[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
 
-        <td>3326</td>
-        <td>10/21/2013</td>
-        <td>3343</td>
-        <td>3343</td>
-        <td>15%</td>
-        <td>$123.4</td>
-        <td>24errqq123</td>
-        <td><%= link_to 'Edit', edit_invoice_path(current_user)  %></td>
       </tr>
-      <tr>
-        <td>3325</td>
-        <td>10/21/2013</td>
-        <td>3:20 PM</td>
-        <td>$234.34</td>
-      </tr>
-      <tr>
-        <td>3324</td>
-        <td>10/21/2013</td>
-        <td>3:03 PM</td>
-        <td>$724.17</td>
-      </tr>
-      <tr>
-        <td>3323</td>
-        <td>10/21/2013</td>
-        <td>3:00 PM</td>
-        <td>$23.71</td>
-      </tr>
-      <tr>
-        <td>3322</td>
-        <td>10/21/2013</td>
-        <td>2:49 PM</td>
-        <td>$8345.23</td>
-      </tr>
-      <tr>
-        <td>3321</td>
-        <td>10/21/2013</td>
-        <td>2:23 PM</td>
-        <td>$245.12</td>
-      </tr>
-      <tr>
-        <td>3320</td>
-        <td>10/21/2013</td>
-        <td>2:15 PM</td>
-        <td>$5663.54</td>
-      </tr>
-      <tr>
-        <td>3319</td>
-        <td>10/21/2013</td>
-        <td>2:13 PM</td>
-        <td>$943.45</td>
-      </tr>
-      </tbody>
+
     </table>
   </div>
 </div>

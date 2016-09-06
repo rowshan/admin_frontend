@@ -1,10 +1,29 @@
 class InvoicesController < ApplicationController
   def index
-   # @invoices= ApiM8::Resources::Books::Invoice.new.items
+   # @invoices= ApiM8::Resources::Books::Invoice.new nil,nil,({:id=>params[:id],
+   #                                                          :invoice_date=>params[:invoice_date],
+   #                                                          :invoice_no=>params[:invoice_no],
+   #                                                          :user_id=>params[:user_id],
+   #                                                          :vat=>params[:vat],
+   #                                                          :total_amount=>params[:total_amount],
+   #                                                          :tenant_id=>current_context.tenant_id
+   # })
 
+    @invoices={:id => "def-3434dsds",
+               :invoice_date => '12-23-1984',
+               :invoice_no => "dweew", :user_id => session[:current_user_id],
+               :vat => 1.345,
+               :total_amount => 30.456,
+               :tenant_id => current_context.tenant_id
+    }
+   puts @invoices[:id]
+
+   # render json: @invoices
   end
 
   def show
+     #render json: @invoices
+
   end
 
   def edit
