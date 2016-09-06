@@ -1,10 +1,20 @@
 class PlantManagementsController < ApplicationController
   def index
-    @plants=ApiM8::Resources::Logistic::Profile.new nil,nil
+   # @plants=ApiM8::Resources::Logistic::Plant.new nil,nil
+    @plants={
+        :id=>session[:current_user_id],
+        :company_name=>"Incepta GmbH",
+        :email=>"incepta@rocket.de",
+        :phone_no=>'015166705921',
+        :address=>'am treptower park 16, 19329 berlin ',
+        :tenant_id =>current_context.tenant_id
+    }
+   #render json: @plants
 
   end
 
   def show
+    @plants
   end
 
   def edit
@@ -19,6 +29,6 @@ class PlantManagementsController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
   end
 end

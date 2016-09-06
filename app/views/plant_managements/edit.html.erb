@@ -1,2 +1,37 @@
-<h1>PlantManagements#edit</h1>
-<p>Find me in app/views/plant_managements/edit.html.erb</p>
+<%= link_to 'Back', plant_managements_url %>
+
+<% provide(:title, ' Plant Management') %>
+<h1>Update customer info</h1>
+
+<%= form_tag plant_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+        <div><%=  label_tag :company_name %><br />
+          <%= text_field_tag :company_name, params[:company_name], :placeholder => "Company name" %></div>
+
+        <div><%=  label_tag :email %><br />
+          <%= email_field_tag :email, params[:email], :placeholder => "Email" %></div>
+
+        <div><%= label_tag :phone_no %><br />
+          <%= text_field_tag :phone_no, params[:phone_no], :placeholder => "Phone" %></div>
+
+        <div><%= label_tag :address %><br />
+          <%= text_field_tag :address,params[:address], :placeholder => "Address" %></div>
+
+
+        <!--<div><%#= label_tag :role %><br />-->
+        <!--<%#= select_tag :role, options_for_select(['Super admin','Admin','Customer Support', 'Marketing','Shift Supervisor', 'Driver','Others', 'Select Roles'],'Select Roles') %>-->
+
+        <!--</div>-->
+      </div>
+
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+<% end %>
+
+
+
