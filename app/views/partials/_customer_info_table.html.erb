@@ -4,8 +4,7 @@
 
 <div class="table-responsive"  id="customer-info" >
   <div class="container">
-    <h2>Table</h2>
-    <p>The .table-hover class enables a hover state on table rows within a tbody:</p>
+    <h2>List of all Customer</h2>
     <table class="table table-hover">
       <thead>
       <tr>
@@ -14,25 +13,52 @@
         <th>Last Name </th>
         <th>DOB</th>
         <th>Country</th>
-        <th>Profile</th>
+        <th>#</th>
+        <th>#</th>
+        <th>#</th>
       </tr>
       </thead>
-      <tbody>
-      <%# for profile in @profiles %>
 
+      <!--<%# profiles.each do |profile| %>-->
+          <!--<tr>-->
+            <!--<td><%#= profile[:first_name] %></td>-->
+            <!--<td><%#= profile[:last_name]%></td>-->
+            <!--<td><%#= profile[:date_of_birth] %></td>-->
+            <!--<td><%#= profile[:country_of_birth] %></td>-->
+            <!--<td><%#= link_to "Show", profile %></td>-->
+            <!--<td><%#= link_to "Edit", edit_customer_path(profile) %></td>-->
+            <!--<td><%#= link_to "Remove", profile, method: :delete, data: { confirm: "Are you sure?" } %></td>-->
+          <!--</tr>-->
+      <!--<%# end %>-->
       <tr>
-        <td>1</td>
-        <td>Anna</td>
-        <!--<td><%#=h profile.first_name %></td>-->
-        <!--<td><%#=h profile.last_name %></td>-->
-        <td><%#=h profile.date_of_birth %></td>
-        <td><%#=h profile.country_of_residence %></td>
-        <td><%#= link_to 'Show', role_customer %></td>
-        <td><%= link_to 'Edit', edit_role_customer_path(current_user)  %></td>
+
+
+
+
+      <% @profiles.each do |key, value| %>
+          <td><%=  "#{value}" %></td>
+
+      <% end %>
+        <td><%= link_to "Show", role_customer_path(@profiles[:id]) %></td>
+        <td><%= link_to "Edit", edit_role_customer_path(@profiles[:id]) %></td>
+        <td><%= link_to "Remove", role_customer_path(@profiles[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+      </tr>
+      <%# end %>
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td></td>-->
+        <!--<td>Anna</td>-->
+        <!--<td><%#= @profile[:first_name] %></td>-->
+        <!--<td><%#= @profile[:last_name] %></td>-->
+        <!--<td><%#= @profile[:date_of_birth] %></td>-->
+        <!--<td><%#= @profile[:country_of_residence] %></td>-->
+        <!--<td><%#= link_to 'Show', role_customer %></td>-->
+        <!--<td><%#= link_to 'Edit', edit_role_customer_path(current_user)  %></td>-->
 
 
         <%#end%>
-      </tbody>
+      <!--</tbody>-->
     </table>
   </div>
 </div>
