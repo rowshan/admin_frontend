@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
      @orders={
          :id=>'1',
          :user_id=>'234-er',
-         :tenant_id=>'234ww',
+         :tenant_id=>'234ww', #current_context.tenant_id,#
          :vat=>'1.2',
          :currency=>'euro',
          :total_amount=>'20',
@@ -24,6 +24,22 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @orders={
+        :id=>'1',
+        :user_id=>'234-er',
+        :tenant_id=>'234ww',#current_context.tenant_id,#
+        :vat=>'1.2',
+        :currency=>'euro',
+        :total_amount=>'20',
+        :invoice_id=>'invo-1'
+
+    }
+
+    @order=@orders.each do|k,v|
+      #{k}:#{v}
+    end
+
+    p @order
   end
 
   def edit

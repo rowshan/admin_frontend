@@ -1,2 +1,19 @@
 <%= link_to 'Back', orders_url %>
 <p>Find me in app/views/orders/show.html.erb</p>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+    <!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of order: <%= @order[:id] %></h1>
+
+<p>
+  <strong>Order id: </strong> <%=  @order[:id] %><br />
+  <strong>User: </strong> <%=  @order[:user_id] %><br />
+  <strong>Tenant: </strong> <%=  @order[:tenant_id]%><br />
+  <strong>Vat :</strong> <%=  @order[:vat]%><br />
+  <strong>Currency:</strong> <%= @order[:currency] %><br />
+  <strong>Total amount: </strong> <%=  @order[:total_amount] %><br />
+
+</p>
