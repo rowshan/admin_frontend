@@ -1,2 +1,31 @@
-<h1>DriverManagements#edit</h1>
-<p>Find me in app/views/driver_managements/edit.html.erb</p>
+<%= link_to 'Back', driver_managements_url %>
+
+<% provide(:title, ' Driver Management') %>
+<h1>Update Driver info</h1>
+
+<%= form_tag driver_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+        <div><%=  label_tag :first_name %><br />
+          <%= text_field_tag :first_name, params[:first_name], :placeholder => "First name" %></div>
+
+        <div><%=  label_tag :last_name %><br />
+          <%= text_field_tag :last_name, params[:last_name], :placeholder => "Last Name" %></div>
+
+        <div><%= label_tag :phone_no %><br />
+          <%= phone_field_tag :phone_no, params[:phone_no], :placeholder => "Phone" %></div>
+
+        <div><%= label_tag :status %><br />
+          <%= text_field_tag :enabled,params[:enabled], :placeholder => "Status" %></div>
+      </div>
+
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+<% end %>
+
+
+

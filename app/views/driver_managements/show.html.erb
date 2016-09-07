@@ -1,2 +1,18 @@
-<h1>DriverManagements#show</h1>
-<p>Find me in app/views/driver_managements/show.html.erb</p>
+<%= link_to 'Back', driver_managements_url %>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of Driver: <%= @driver[:id] %></h1>
+
+<p>
+  <strong>Driver id: </strong> <%=  @driver[:id] %><br />
+  <strong>First Name: </strong> <%=  @driver[:first_name] %><br />
+  <strong>Last Name: </strong> <%=  @driver[:last_name]%><br />
+  <strong>Phone :</strong> <%=  @driver[:phone_no]%><br />
+  <strong>Plant id:</strong> <%= @driver[:plant_id] %><br />
+  <strong>Status: </strong> <%=  @driver[:enabled] %><br />
+
+</p>
