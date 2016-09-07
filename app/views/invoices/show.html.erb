@@ -1,9 +1,16 @@
-<h1>Invoices#show</h1>
-<tr></tr>
-<%# @invoices.each do |keys, values| %>
-    <%#= @invoices.keys.inspect %>
-    <%#= @invoices.values.inspect %>
+<%= link_to 'Back', invoices_url %>
 
-    <%#=  "#{value}" %>
-<%# end %>
-</tr>
+
+<h1>Details of invoice: <%= @invoice[:id] %></h1>
+
+<p>
+  <strong>invoice id: </strong> <%=  @invoice[:id] %><br />
+  <strong>Invoice date: </strong> <%=  @invoice[:invoice_date] %><br />
+  <strong>Invoice Number: </strong> <%=  @invoice[:invoice_no]%><br />
+  <strong>User :</strong> <%=  @invoice[:user_id]%><br />
+  <strong>vat :</strong> <%=  @invoice[:vat]%><br />
+  <strong>Currency:</strong> <%= @invoice[:currency] %><br />
+  <strong>Total amount: </strong> <%=  @invoice[:total_amount] %><br />
+  <strong>Tenant Id: </strong> <%=  @invoice[:tenant_id] %><br />
+
+</p>
