@@ -1,2 +1,19 @@
-<h1>PlantManagements#show</h1>
-<p>Find me in app/views/plant_managements/show.html.erb</p>
+<%= link_to 'Back', plant_managements_url %>
+<p>Find me in app/views/orders/show.html.erb</p>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of plant: <%= @plant[:id] %></h1>
+
+<p>
+  <strong>plant id: </strong> <%=  @plant[:id] %><br />
+  <strong>Company Name: </strong> <%=  @plant[:company_name] %><br />
+  <strong>email: </strong> <%=  @plant[:tenant_id]%><br />
+  <strong>Phone :</strong> <%=  @plant[:phone_no]%><br />
+  <strong>Address:</strong> <%= @plant[:address] %><br />
+  <strong>Tenant: </strong> <%=  @plant[:tenant_id] %><br />
+
+</p>
