@@ -1,2 +1,30 @@
-<h1>ScheduleManagements#edit</h1>
-<p>Find me in app/views/schedule_managements/edit.html.erb</p>
+<%= link_to 'Back', schedule_managements_url %>
+
+<% provide(:title, ' Schedule Management') %>
+<h1>Update schedule </h1>
+
+<%= form_tag schedule_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+
+        <div><%=  label_tag :date %><br />
+          <%= text_field_tag :date, params[:date], :placeholder => "Insert date" %>
+
+        </div>
+
+        <div><%=  label_tag :driver_id %><br />
+          <%= text_field_tag :driver_id, params[:driver_id], :placeholder => "Driver id" %></div>
+
+
+
+      </div>
+      <br>
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+
+<% end %>
+

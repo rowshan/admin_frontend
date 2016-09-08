@@ -1,0 +1,38 @@
+
+
+<div class="panel-body">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+      <tr>
+        <th> Id #</th>
+        <th> date </th>
+        <th>shift_id</th>
+        <th>driver_id</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+    <!--<%#= @orders.each do|order| %>-->
+
+      <tr>
+        <!--<td><%#=link_to(order.invoice_id , order)%></td>-->
+
+        <% @schedules.each do |key, value| %>
+            <td><%=  "#{value}" %></td>
+
+        <% end %>
+        <td><%= link_to "Show", schedule_management_path(@schedules[:id]) %></td>
+        <td><%= link_to 'Edit', edit_schedule_management_path(@schedules[:id])  %></td>
+
+        <td><%= link_to "Remove",schedule_management_path(@schedules[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+
+      </tr>
+
+
+    </table>
+  </div>
+</div>
