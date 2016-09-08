@@ -1,2 +1,24 @@
-<h1>PostalManagements#edit</h1>
-<p>Find me in app/views/postal_managements/edit.html.erb</p>
+<%= link_to 'Back', postal_managements_url %>
+
+<% provide(:title, ' Postalcode Management') %>
+<h1>Update postalcode info</h1>
+
+<%= form_tag postal_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+        <div><%=  label_tag :code %><br />
+          <%= text_field_tag :code, params[:code], :placeholder => "postal code" %></div>
+
+
+      </div>
+
+
+      <br>
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+
+<% end %>

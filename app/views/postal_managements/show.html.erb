@@ -1,2 +1,15 @@
-<h1>PostalManagements#show</h1>
-<p>Find me in app/views/postal_managements/show.html.erb</p>
+<%= link_to 'Back', postal_managements_url %>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of Postalarea: <%= @postal[:id] %></h1>
+
+<p>
+  <strong>id: </strong> <%=  @postal[:id] %><br />
+  <strong> Code: </strong> <%=  @postal[:code] %><br />
+  <strong>City Id: </strong> <%=  @postal[:city_id] %><br />
+
+</p>
