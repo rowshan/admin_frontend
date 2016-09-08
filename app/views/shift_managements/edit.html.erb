@@ -1,2 +1,33 @@
-<h1>ShiftManagements#edit</h1>
-<p>Find me in app/views/shift_managements/edit.html.erb</p>
+<%= link_to 'Back', shift_managements_url %>
+
+<% provide(:title, ' Shift Management') %>
+<h1>Update Shift info</h1>
+
+<%= form_tag shift_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+        <div><%=  label_tag :name %><br />
+          <%= text_field_tag :name, params[:name], :placeholder => "Shift name" %></div>
+
+        <div><%=  label_tag :start_time %><br />
+          <%= text_field_tag :start_time, params[:start_time], :placeholder => "Insert start time" %>
+
+        </div>
+
+        <div><%=  label_tag :end_time %><br />
+          <%= text_field_tag :end_time, params[:end_time], :placeholder => "Insert end time" %></div>
+
+        <div><%=  label_tag :enabled %><br />
+          <%= text_field_tag :enabled, params[:enabled], :placeholder => "Status" %></div>
+
+      </div>
+      <br>
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+
+<% end %>
+

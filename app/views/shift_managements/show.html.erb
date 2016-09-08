@@ -1,2 +1,18 @@
-<h1>ShiftManagements#show</h1>
-<p>Find me in app/views/shift_managements/show.html.erb</p>
+<%= link_to 'Back', shift_managements_url %>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of Shift  <%= @shift[:id] %></h1>
+
+<p>
+  <strong>id: </strong> <%=  @shift[:id] %><br />
+  <strong> Name: </strong> <%=  @shift[:name] %><br />
+  <strong>Enabled: </strong> <%=  @shift[:enabled] %><br />
+  <strong>Start time: </strong> <%=  @shift[:start_time] %><br />
+  <strong>End time: </strong> <%=  @shift[:end_time] %><br />
+  <strong>Plant Id: </strong> <%=  @shift[:plant_id] %><br />
+
+</p>

@@ -15,63 +15,24 @@
       </tr>
       </thead>
 
-      <tbody>
       <!--<%#= @orders.each do|order| %>-->
 
       <tr>
         <!--<td><%#=link_to(order.invoice_id , order)%></td>-->
 
-        <td>3326</td>
-        <td>mark twins</td>
-        <td>Yes</td>
-        <td>10/21/2013 8:20 am </td>
-        <td> 10/21/2013 3:00 pm</td>
-        <td>24errqq123</td>
-        <td><%= link_to 'Edit', edit_shift_management_path(current_user)  %></td>
+        <% @shifts.each do |key, value| %>
+            <td><%=  "#{value}" %></td>
+
+        <% end %>
+        <td><%= link_to "Show", shift_management_path(@shifts[:id]) %></td>
+        <td><%= link_to 'Edit', edit_shift_management_path(@shifts[:id])  %></td>
+
+        <td><%= link_to "Remove",shift_management_path(@shifts[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
-      <tr>
-        <td>3325</td>
-        <td>10/21/2013</td>
-        <td>3:20 PM</td>
-        <td>$234.34</td>
+
       </tr>
-      <tr>
-        <td>3324</td>
-        <td>10/21/2013</td>
-        <td>3:03 PM</td>
-        <td>$724.17</td>
-      </tr>
-      <tr>
-        <td>3323</td>
-        <td>10/21/2013</td>
-        <td>3:00 PM</td>
-        <td>$23.71</td>
-      </tr>
-      <tr>
-        <td>3322</td>
-        <td>10/21/2013</td>
-        <td>2:49 PM</td>
-        <td>$8345.23</td>
-      </tr>
-      <tr>
-        <td>3321</td>
-        <td>10/21/2013</td>
-        <td>2:23 PM</td>
-        <td>$245.12</td>
-      </tr>
-      <tr>
-        <td>3320</td>
-        <td>10/21/2013</td>
-        <td>2:15 PM</td>
-        <td>$5663.54</td>
-      </tr>
-      <tr>
-        <td>3319</td>
-        <td>10/21/2013</td>
-        <td>2:13 PM</td>
-        <td>$943.45</td>
-      </tr>
-      </tbody>
+
+
     </table>
   </div>
 </div>

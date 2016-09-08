@@ -8,7 +8,7 @@
 
     <ul >
           <li><a href="#" class="shift-info">All shifts</a></li> <%#= link_to "Customer Info", role_customers_path %>
-          <li><a href="#" class="default-view"> <%= link_to "Edit shift", edit_shift_management_path(current_user) %></a></li>
+          <li><a href="#" class="default-view"> <%= link_to "Edit shift", edit_shift_management_path(@shifts[:id]) %></a></li>
           <li><a href="#">View all Product</a></li>
           <li><a href="#">Edit Product</a></li>
           </ul>
