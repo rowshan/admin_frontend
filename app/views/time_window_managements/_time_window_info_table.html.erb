@@ -11,65 +11,27 @@
         <th>Start Time </th>
         <th>End Time</th>
         <th></th>
+        <th></th>
+        <th></th>
       </tr>
       </thead>
 
-      <tbody>
+
       <!--<%#= @orders.each do|order| %>-->
 
       <tr>
         <!--<td><%#=link_to(order.invoice_id , order)%></td>-->
+        <% @time_windows.each do |key, value| %>
+            <td><%=  "#{value}" %></td>
 
-        <td>3326</td>
-        <td>bla blab bla</td>
-        <td>24errqq123</td>
-        <td>10/21/2013 3:20 PM</td>
-        <td>10/22/2013 3:20 am</td>
-        <td><%= link_to 'Edit', edit_time_window_management_path(current_user)  %></td>
+        <% end %>
+        <td><%= link_to "Show", time_window_management_path(@time_windows[:id]) %></td>
+        <td><%= link_to "Edit",  edit_time_window_management_path(@time_windows[:id]) %></td>
+
+        <td><%= link_to "Remove",time_window_management_path(@time_windows[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
-      <tr>
-        <td>3325</td>
-        <td>10/21/2013</td>
-        <td>3:20 PM</td>
-        <td>$234.34</td>
-      </tr>
-      <tr>
-        <td>3324</td>
-        <td>10/21/2013</td>
-        <td>3:03 PM</td>
-        <td>$724.17</td>
-      </tr>
-      <tr>
-        <td>3323</td>
-        <td>10/21/2013</td>
-        <td>3:00 PM</td>
-        <td>$23.71</td>
-      </tr>
-      <tr>
-        <td>3322</td>
-        <td>10/21/2013</td>
-        <td>2:49 PM</td>
-        <td>$8345.23</td>
-      </tr>
-      <tr>
-        <td>3321</td>
-        <td>10/21/2013</td>
-        <td>2:23 PM</td>
-        <td>$245.12</td>
-      </tr>
-      <tr>
-        <td>3320</td>
-        <td>10/21/2013</td>
-        <td>2:15 PM</td>
-        <td>$5663.54</td>
-      </tr>
-      <tr>
-        <td>3319</td>
-        <td>10/21/2013</td>
-        <td>2:13 PM</td>
-        <td>$943.45</td>
-      </tr>
-      </tbody>
+
+
     </table>
   </div>
 </div>

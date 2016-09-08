@@ -1,2 +1,17 @@
-<h1>TimeWindowManagements#show</h1>
-<p>Find me in app/views/time_window_managements/show.html.erb</p>
+<%= link_to 'Back', time_window_managements_url %>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of Postalarea: <%= @time_window[:id] %></h1>
+
+<p>
+  <strong>id: </strong> <%=  @time_window[:id] %><br />
+  <strong> Label: </strong> <%=  @time_window[:label] %><br />
+  <strong>Tenant Id: </strong> <%=  @time_window[:tenant_id] %><br />
+  <strong>Start Time: </strong> <%=  @time_window[:start_time] %><br />
+  <strong>End  Time: </strong> <%=  @time_window[:end_time] %><br />
+
+</p>

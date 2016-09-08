@@ -1,2 +1,34 @@
-<h1>TimeWindowManagements#edit</h1>
-<p>Find me in app/views/time_window_managements/edit.html.erb</p>
+<%= link_to 'Back', time_window_managements_url %>
+
+<% provide(:title, ' Time Window Management') %>
+<h1>Update Time Window info</h1>
+
+<%= form_tag time_window_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+        <div><%=  label_tag :label %><br />
+          <%= text_field_tag :label, params[:label], :placeholder => "Write label" %></div>
+
+        <div><%=  label_tag :start_time %><br />
+          <%= text_field_tag :start_time, params[:start_time], :placeholder => "Insert start time" %>
+
+        </div>
+
+        <div><%=  label_tag :end_time %><br />
+          <%= text_field_tag :end_time, params[:end_time], :placeholder => "Insert end time" %></div>
+
+
+      </div>
+      <br>
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+
+<% end %>
+
+
+
+
