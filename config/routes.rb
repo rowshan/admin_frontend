@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
     resources :admin_dashboards
     resources :customers, :only => [:create, :edit, :new, :update, :destroy, :show,:index]
-    post  'create_custom',  to: 'customers#create'
+    #post  'create_custom',  to: 'customers#create'
 
   end
 

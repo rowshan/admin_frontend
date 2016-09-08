@@ -3,12 +3,12 @@
 <% provide(:title, 'Customer profile') %>
 <h1>Update customer info</h1>
 
-<%= form_tag role_create_custom_path, method:"post" do %>
+<%= form_tag role_customer_path(params[:id]), method:"put" do %>
 
     <fieldset>
       <div>
         <div><%=  label_tag :first_name %><br />
-          <%= text_field_tag :first, params[:first_name], :placeholder => "First name" %></div>
+          <%= text_field_tag :first_name, params[:first_name], :placeholder => "First name" %></div>
 
         <div><%=  label_tag :last_name %><br />
           <%= text_field_tag :last_name, params[:last_name], :placeholder => "Last name" %></div>
@@ -16,7 +16,7 @@
         <div><%= label_tag :date_of_birth %><br />
           <%= text_field_tag :date_of_birth, params[:date_of_birth], :placeholder => "Date of Birth" %></div>
 
-        <div><%= label_tag :country_of_residence %><br />
+        <div><%= label_tag :country_of_residence %><br/>
           <%= text_field_tag :country_of_residence,params[:country_of_residence], :placeholder => "country of residence" %></div>
 
         <!--<div><%#= label_tag :role %><br />-->
@@ -26,7 +26,7 @@
       </div>
 
       <div>
-        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+        <%= submit_tag "Save changes", class: "btn btn-primary" %>
       </div>
     </fieldset>
 

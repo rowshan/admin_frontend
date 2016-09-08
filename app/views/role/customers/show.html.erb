@@ -1,17 +1,13 @@
-<h1>Role::Customers#show</h1>
-
-<%# for profile in @profiles  %>
-      <!--<tr>-->
-        <!--<td><%#= @profiles[:first_name]=='first_name' %></td>-->
-        <!--<td><%#= @profile[:last_name] %></td>-->
-      <!--</tr>-->
-<!--<%# end%>-->
-<a class="sidenav-toggle-btn">
-  <span  style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-</a>
-
 <%= link_to 'Back', role_customers_url %>
 
+<h1>Details of Customer: <%= @customer.login %></h1>
 
-  <%#= render 'partials/customer_info_table' %>
+<p>
+  <strong> Customer id: </strong> <%=  @customer.id %><br />
+  <strong> Profile id: </strong> <%=  @customer.profile.id %><br />
+  <strong>First Name: </strong> <%=  @customer.profile.first_name %><br />
+  <strong>Last Name: </strong> <%=  @customer.profile.last_name%><br />
+  <strong>Date of Birth :</strong> <%=  @customer.profile.date_of_birth%><br />
+  <strong>Country od Residence:</strong> <%= @customer.profile.country_of_residence %><br />
 
+</p>
