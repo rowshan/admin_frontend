@@ -1,2 +1,17 @@
-<h1>TripManagements#show</h1>
-<p>Find me in app/views/trip_managements/show.html.erb</p>
+<%= link_to 'Back', trip_managements_url %>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of Trip  <%= @trip[:id] %></h1>
+
+<p>
+  <strong>id: </strong> <%=  @trip[:id] %><br />
+  <strong> Trip kind: </strong> <%=  @trip[:trip_kind] %><br />
+  <strong>Order id: </strong> <%=  @trip[:order_id] %><br />
+  <strong>date: </strong> <%=  @trip[:date] %><br />
+  <strong>Time Window Id: </strong> <%=  @trip[:time_window_id] %><br />
+
+</p>

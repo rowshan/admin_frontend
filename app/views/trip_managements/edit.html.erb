@@ -1,2 +1,30 @@
-<h1>TripManagements#edit</h1>
-<p>Find me in app/views/trip_managements/edit.html.erb</p>
+<%= link_to 'Back', trip_managements_url %>
+
+<% provide(:title, ' Trip Management') %>
+<h1>Update Trip info</h1>
+
+<%= form_tag trip_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+
+        <div><%=  label_tag :trip_kind_id %><br />
+          <%= text_field_tag :trip_kind_id, params[:trip_kind_id], :placeholder => "Insert Id" %>
+
+        </div>
+
+        <div><%=  label_tag :date %><br />
+          <%= text_field_tag :name, params[:name], :placeholder => "Shift name" %></div>
+
+
+
+      </div>
+      <br>
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+
+<% end %>
+
