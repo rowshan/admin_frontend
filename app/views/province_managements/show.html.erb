@@ -1,2 +1,15 @@
-<h1>ProvinceManagements#show</h1>
-<p>Find me in app/views/province_managements/show.html.erb</p>
+<%= link_to 'Back', province_managements_url %>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of Country: <%= @province[:id] %></h1>
+
+<p>
+  <strong>id: </strong> <%=  @province[:id] %><br />
+  <strong> Name: </strong> <%=  @province[:name] %><br />
+  <strong>Code: </strong> <%=  @province[:slug] %><br />
+
+</p>

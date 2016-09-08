@@ -1,0 +1,35 @@
+
+
+<div class="panel-body">
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+      <thead>
+      <tr>
+        <th>id #</th>
+        <th>Name #</th>
+        <th>Slug</th>
+
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <!--<%#= @orders.each do|order| %>-->
+
+      <tr>
+        <!--<td><%#=link_to(order.invoice_id , order)%></td>-->
+        <% @provinces.each do |key, value| %>
+            <td><%=  "#{value}" %></td>
+
+        <% end %>
+        <td><%= link_to "Show", province_management_path(@provinces[:id]) %></td>
+        <td><%= link_to "Edit",  edit_province_management_path(@provinces[:id]) %></td>
+        <td><%= link_to "Remove", province_management_path(@provinces[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+
+      </tr>
+
+    </table>
+  </div>
+</div>
