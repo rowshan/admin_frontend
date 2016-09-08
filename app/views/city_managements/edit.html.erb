@@ -1,2 +1,24 @@
-<h1>CityManagements#edit</h1>
-<p>Find me in app/views/city_managements/edit.html.erb</p>
+<%= link_to 'Back', city_managements_url %>
+
+<% provide(:title, ' City Management') %>
+<h1>Update City info</h1>
+
+<%= form_tag city_management_path, method:"post" do %>
+
+    <fieldset>
+      <div>
+        <div><%=  label_tag :name %><br />
+          <%= text_field_tag :name, params[:name], :placeholder => "City name" %></div>
+
+        <div><%=  label_tag :slug %><br />
+          <%= text_field_tag :slug, params[:slug], :placeholder => "Slug" %></div>
+      </div>
+      <br>
+      <div>
+        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+      </div>
+    </fieldset>
+
+
+<% end %>
+

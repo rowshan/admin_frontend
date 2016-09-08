@@ -1,2 +1,17 @@
-<h1>CityManagements#show</h1>
-<p>Find me in app/views/city_managements/show.html.erb</p>
+<%= link_to 'Back', city_managements_url %>
+<!--<ul>-->
+<!--<%# @orders.each do |order| %>-->
+<!--<li><%#=  link_to order.vat,{:action=>'show', :id=>order.id}-%></li>-->
+<!--<%# end %>-->
+
+<!--</ul>-->
+<h1>Details of City: <%= @city[:id] %></h1>
+
+<p>
+  <strong>id: </strong> <%=  @city[:id] %><br />
+  <strong> Name: </strong> <%=  @city[:name] %><br />
+  <strong>Slug: </strong> <%=  @city[:slug] %><br />
+  <strong>Province ID: </strong> <%=  @city[:province_id] %><br />
+
+</p>
+
