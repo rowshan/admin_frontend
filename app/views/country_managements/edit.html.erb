@@ -1,7 +1,7 @@
 <%= link_to 'Back', country_managements_url %>
 
-<% provide(:title, ' Driver Management') %>
-<h1>Update Driver info</h1>
+<% provide(:title, ' Country Management') %>
+<h1>Update country info</h1>
 
 <%= form_tag country_management_path, method:"post" do %>
 
@@ -11,7 +11,7 @@
           <%= text_field_tag :name, params[:name], :placeholder => "Country name" %></div>
 
         <div><%=  label_tag :code %><br />
-          <%= text_field_tag :code, params[:code], :placeholder => "country code" %></div>
+          <%= text_field_tag :code, params[:code], :placeholder => "Country code" %></div>
 
       </div>
       <br>
