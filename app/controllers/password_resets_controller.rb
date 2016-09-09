@@ -18,28 +18,29 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = ApiM8::Resources::Accounts::User.new.password_forgotten(params[:login])
-    @user.password_reset(params[:password_reset_token], params[:password], params[:password_confirmation]) if @user.save!
+    @user = @customers = ApiM8::Client::Account::Users.instance.password_forgotten(params[:login])
+    @user.instance.password_reset(params[:password_reset_token], params[:password], params[:password_confirmation]) if @user.save!
 
     redirect_to edit_password_reset_url(id: @user.password_reset_token), :notice => 'Enter your new password'
   end
 
   def edit
+    @user = ApiM8::Client::Account::Users.instance.show(params[:id])
+
 
   end
 
   def update
-    @user = ApiM8::Resources::Accounts::User.new nil, nil, {:id => params[:id]}#, :password => params[:password],
-                                                            #:password_confirmation => params[:password_confirmation]}
+    @user = ApiM8::Client::Account::Users.instance.show(params[:id])
     puts @user
-    if @user.save!
-      @user.password_reset(params[:password], params[:password_confirmation],:password_reset_token=>params[:password_reset_token])
 
-      @user.update_attributes(user_params)
+    @user.password_reset(params[:password], params[:password_confirmation],:password_reset_token=>params[:password_reset_token])
+
+    if @user.update(user_params)
 
       #@user.update_attributes(params[:password])
       flash[:success] = "Passsword has been changed. "
-      redirect_to root_url
+      redirect_to login_url
     else
       render 'edit'
     end
@@ -48,7 +49,7 @@ class PasswordResetsController < ApplicationController
 
   private
   def user_params
-    params.permit(:id, :login, :password, :password_confirmation, :role_id, :name, :tenant_id)
+    params.permit(:login, :password, :password_confirmation, :role_id, :name, :tenant_id)
   end
   end
 
