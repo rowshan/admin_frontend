@@ -38,7 +38,9 @@ class Role::CustomersController < ApplicationController
                                               :country_of_residence=> params[:country_of_residence])
      if  @customer.profile.save
 
-      redirect_to role_customers_path
+      redirect_to role_customers_path, :notice=>'Profile has been updated.'
+     else
+       redirect_to new_role_admin_dashboard
     end
 
   end
