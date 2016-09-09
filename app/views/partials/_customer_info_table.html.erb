@@ -6,20 +6,23 @@
     <table class="table table-hover">
       <thead>
       <tr>
-        <th>#</th>
+        <!--<th>#</th>-->
         <th>User ID</th>
         <th>Profile ID</th>
         <th>Email</th>
+        <th>First Name</th>
         <th>Last Name</th>
         <th>Date of Birth</th>
         <th>Country of residence</th>
+        <th>URL</th>
+        <th></th>
         <th></th>
         <th></th>
       </tr>
       </thead>
       <% @customers.each do |c| %>
           <tr>
-            <td><%#= c.inspect %></td>
+            <!--<td><%#= c.inspect %></td>-->
             <td><%= c.id %></td>
             <td><%= c.profile.id %></td>
             <td><%= c.login %></td>
