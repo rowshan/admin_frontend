@@ -28,9 +28,6 @@ Rails.application.routes.draw do
 
 
   # #password_reset controller
-   #post 'password_resets', to: 'password_reset#create'
-  # get 'password_resets/new', to: 'password_resets#new'
-   #post 'send_password', to: 'password_resets#create'#, as: :send_password_reset
     get 'password_resets/:id/edit', to: 'password_resets#edit'
     post 'password_resets/:id', to: 'password_resets#update'
 
@@ -41,8 +38,7 @@ Rails.application.routes.draw do
 
   namespace :role do
     resources :super_admin_dashboards #, :only => [:create, :edit, :new, :update, :destroy, :show,:index]
-    # get  'signup_new',  to: 'super_admin_dashboards#new', as: signup_new
-    #post  'signup',  to: 'super_admin_dashboards#create'
+
 
     resources :admin_dashboards
     resources :customers, :only => [:create, :edit, :new, :update, :destroy, :show,:index]

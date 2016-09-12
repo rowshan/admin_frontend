@@ -5,9 +5,11 @@
     <table class="table table-bordered table-hover table-striped">
       <thead>
       <tr>
+        <!--<th> #</th>-->
         <th>id #</th>
         <th>Name #</th>
         <th>Code</th>
+        <th>Url</th>
 
         <th></th>
         <th></th>
@@ -15,20 +17,23 @@
       </tr>
       </thead>
 
-      <!--<%#= @orders.each do|order| %>-->
 
       <tr>
-        <!--<td><%#=link_to(order.invoice_id , order)%></td>-->
-        <% @countries.each do |key, value| %>
-            <td><%=  "#{value}" %></td>
+        <% @countries.each do|i|%>
+            <!--<td><%#= i.inspect %></td>-->
+
+            <td><%= i.id %></td>
+            <td><%= i.name %></td>
+            <td><%= i.code %></td>
+            <td><%= i.url %></td>
+
+        <td><%= link_to "Show", country_management_path(i.id) %></td>
+        <td><%= link_to "Edit",  edit_country_management_path(i.id) %></td>
+        <td><%= link_to "Remove", country_management_path(i.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+            </tr>
 
         <% end %>
-        <td><%= link_to "Show", country_management_path(@countries[:id]) %></td>
-        <td><%= link_to "Edit",  edit_country_management_path(@countries[:id]) %></td>
-        <td><%= link_to "Remove", country_management_path(@countries[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
 
-
-      </tr>
 
     </table>
   </div>

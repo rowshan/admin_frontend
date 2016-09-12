@@ -1,33 +1,47 @@
 class CountryManagementsController < ApplicationController
   def index
-    @countries={
-    :id=>1,
-    :name=>'Germany',
-    :code=>'DE'
-    }
+
+    @countries=ApiM8::Client::KB::Countries.instance.index
+
   end
 
   def show
-    @countries={
-        :id=>1,
-        :name=>'Germany',
-        :code=>'DE'
-    }
-    @country=@countries.each do |k,v|
-      #{k}#{v}
-    end
+    @country=ApiM8::Client::KB::Countries.instance.show(params[:id])
+
+
   end
 
   def edit
+    @country=ApiM8::Client::KB::Countries.instance.show(params[:id])
+
   end
 
   def new
   end
 
   def create
+    @country=ApiM8::Client::KB::Countries.instance.create(:name => params[:name],
+                                                          :code => params[:code])
+
+    if @country
+      redirect_to country_managements_path, :alert => "country has been created successfully!"
+    else
+      render "new", :alert => "Create a new country please!"
+    end
+
   end
 
   def update
+    @country=ApiM8::Client::KB::Countries.instance.show(params[:id])
+    @country.update(:name => params[:name],
+                    :code => params[:code])
+    if @country.save
+      redirect_to country_managements_path, :notice=>'Country has been updated.'
+
+    else
+      render "edit"
+
+    end
   end
 
   def delete

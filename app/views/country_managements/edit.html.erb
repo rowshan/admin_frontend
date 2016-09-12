@@ -3,12 +3,13 @@
 <% provide(:title, ' Country Management') %>
 <h1>Update country info</h1>
 
-<%= form_tag country_management_path, method:"post" do %>
+<%= form_tag country_management_path(params[:id]), method:"put" do %>
 
-    <fieldset>
+
+        <fieldset>
       <div>
         <div><%=  label_tag :name %><br />
-          <%= text_field_tag :name, params[:name], :placeholder => "Country name" %></div>
+          <%= text_field_tag :name, params[:name], :placeholder => "Country name" ,value:params[:name]%></div>
 
         <div><%=  label_tag :code %><br />
           <%= text_field_tag :code, params[:code], :placeholder => "Country code" %></div>
