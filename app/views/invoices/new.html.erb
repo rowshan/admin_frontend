@@ -1,2 +1,45 @@
-<h1>Invoices#new</h1>
-<p>Find me in app/views/invoices/new.html.erb</p>
+<%= link_to 'Back', invoices_url %>
+
+<% provide(:title, ' Invoice Management') %>
+
+
+<%= form_tag invoices_path, method: "post" do %>
+
+    <fieldset>
+      <div>
+
+        <div><%= label_tag :invoice_no %><br/>
+          <%= text_field_tag :invoice_no, params[:invoice_no], :placeholder => "Vat%" %></div>
+
+        <div><%= label_tag :invoice_date %><br/>
+          <%= text_field_tag :invoice_date, params[:invoice_date], :placeholder => "Vat%" %></div>
+        <% if current_context.tenant_id %>
+
+            <div><%= label_tag :user %><br/>
+              <%= text_field_tag :user_id, params[:user_id], :placeholder => "Vat%" %></div>
+        <% end %>
+
+
+        <div><%= label_tag :vat %><br/>
+          <%= text_field_tag :vat, params[:vat], :placeholder => "Vat%" %></div>
+
+        <div><%= label_tag :total_amount %> <br/>
+          <%= text_field_tag :total_amount, params[:total_amount], :placeholder => "Total amount" %></div>
+
+        <div><%= label_tag :currency %><br/>
+          <%= text_field_tag :currency, params[:currency], :placeholder => "Currency" %></div>
+      </div>
+      <div><%= label_tag :tenant_id %><br/>
+        <%= text_field_tag :tenant_id, params[:tenant_id], :placeholder => "Vat%", value: current_context.tenant_id %>
+      </div>
+      <br/>
+
+      <div>
+        <%= submit_tag "Submit", class: "btn btn-primary" %> <br/>
+      </div>
+    </fieldset>
+
+<% end %>
+
+
+

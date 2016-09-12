@@ -3,28 +3,26 @@
 <% provide(:title, ' Invoice Management') %>
 
 
-<%= form_tag invoice_path, method:"post" do %>
+<%= form_tag invoice_path(params[:id]), method: "put" do %>
 
     <fieldset>
       <div>
-        <div><%=  label_tag :invoice_date %><br />
-          <%= date_field_tag :invoice_date, params[:invoice_date], :placeholder => "Date" %></div>
 
-        <div><%=  label_tag :invoice_no %><br />
-          <%= text_field_tag :invoice_no, params[:invoice_no], :placeholder => "Invoice No" %></div>
 
-        <div><%= label_tag :user %><br />
-          <%= text_field_tag :user_id, params[:user_id], :placeholder => "User Id" %></div>
+        <div><%= label_tag :vat %><br/>
+          <%= text_field_tag :vat, params[:vat], :placeholder => "Vat%" %></div>
 
-        <div><%= label_tag :vat %><br />
-          <%= text_field_tag :vat,params[:vat], :placeholder => "Vat%" %></div>
+        <div><%= label_tag :total_amount %> <br/>
+          <%= text_field_tag :total_amount, params[:total_amount], :placeholder => "Total amount" %></div>
 
-      <div><%= label_tag :total_amount %><br />
-        <%= text_field_tag :total_amount,params[:total_amount], :placeholder => "Total amount" %></div>
+        <div><%= label_tag :currency %><br/>
+        <%= text_field_tag :currency, params[:currency], :placeholder => "Currency" %></div>
       </div>
 
+      <br/>
+
       <div>
-        <%= submit_tag "Save changes" ,class: "btn btn-primary"%>
+        <%= submit_tag "Save changes", class: "btn btn-primary" %>
       </div>
     </fieldset>
 
