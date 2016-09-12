@@ -8,29 +8,44 @@
       <thead>
       <tr>
 
+        <!--<th>#</th>-->
         <th>Invoice Id #</th>
-        <th>Invoice Date</th>
         <th>Invoice No.</th>
+        <th>Invoice Date</th>
         <th>User</th>
         <th>Vat(%)</th>
         <th>Total Amount</th>
         <th>Tenant_id</th>
+        <th>Url</th>
         <th></th>
         <th></th>
         <th></th>
       </tr>
       </thead>
 
-      <tr>
-        <% @invoices.each do |key, value| %>
-            <td><%=  "#{value}" %></td>
-        <% end %>
 
-        <td><%= link_to "Show", invoice_path(@invoices[:id]) %></td>
-        <td><%= link_to "Edit", edit_invoice_path(@invoices[:id]) %></td>
-        <td><%= link_to "Remove",invoice_path(@invoices[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      <tr>
+      <% @invoices.each do |i| %>
+
+
+                <!--<td><%#= i.inspect %></td>-->
+                <td><%= i.id %></td>
+                <td><%= i.invoice_no %></td>
+                <td><%= i.invoice_date %></td>
+                <td><%= i.user_id %></td>
+                <td><%= i.vat %></td>
+                <td><%= i.total_amount %></td>
+                <td><%= i.tenant_id %></td>
+                <td><%= i.url %></td>
+
+        <td><%= link_to "Show", invoice_path(i.id) %></td>
+        <td><%= link_to "Edit", edit_invoice_path(i.id) %></td>
+        <td><%= link_to "Remove",invoice_path(i.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
 
       </tr>
+
+          <% end %>
+
 
     </table>
   </div>
