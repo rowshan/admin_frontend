@@ -3,7 +3,8 @@
 <% provide(:title, ' Order Management') %>
 
 
-<%= form_tag order_path, method: "post" do %>
+<%= form_tag order_path(params[:id]), method: "put" do %>
+
 
     <fieldset>
       <div>
@@ -21,8 +22,7 @@
 
       <div><%= label_tag :currency %><br/>
         <%= text_field_tag :currency, params[:currency], :placeholder => "Insert currency" %>
-      </div>
-<br>
+      </div> <br/>
       <div>
         <%= submit_tag "Save changes", class: "btn btn-primary" %>
       </div>

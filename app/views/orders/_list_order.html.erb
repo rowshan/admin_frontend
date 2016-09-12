@@ -5,6 +5,8 @@
     <table class="table table-bordered table-hover table-striped">
       <thead>
       <tr>
+
+        <!--<th># </th>-->
         <th>Order Id </th>
         <th>User Id</th>
         <th>Tenant id</th>
@@ -19,17 +21,30 @@
       </thead>
 
 
-     <tr>
-        <% @orders.each do |order, val| %>
-            <td><%= "#{val}" %></td>
+      <tr>
+        <% @orders.each do |i| %>
+
+
+            <td><%#= i.inspect %></td>
+            <td><%= i.id %></td>
+            <td><%= i.user_id %></td>
+            <td><%= i.tenant_id %></td>
+            <td><%= i.vat %></td>
+            <td><%= i.currency %></td>
+
+            <td><%= i.total_amount %></td>
+            <td><%= i.url %></td>
+
+            <td><%= link_to "Show", order_path(i.id) %></td>
+            <td><%= link_to "Edit", edit_order_path(i.id) %></td>
+            <td><%= link_to "Remove",order_path(i.id), method: :delete, data: { confirm: "Are you sure?" } %></td>
+
+            </tr>
+
         <% end %>
-       <td><%= link_to "Show", order_path(@orders[:id]) %></td>
-       <td><%= link_to 'Edit', edit_order_path(@orders[:id])  %></td>
-       <td><%= link_to "Remove",order_path(@orders[:id]), method: :delete, data: { confirm: "Are you sure?" } %></td>
-
-     </tr>
 
 
-    </table>
+
+        </table>
   </div>
 </div>

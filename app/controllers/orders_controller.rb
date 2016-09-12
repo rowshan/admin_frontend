@@ -1,49 +1,16 @@
 class OrdersController < ApplicationController
   def index
-    #@orders=ApiM8::Resources::Books::Order.new.index
-    #puts @orders
-    # respond_to do |format|
-    #   format.html
-    #   format.json
-
-     @orders={
-         :id=>'1',
-         :user_id=>'234-er',
-         :tenant_id=>'234ww', #current_context.tenant_id,#
-         :vat=>'1.2',
-         :currency=>'euro',
-         :total_amount=>'20',
-         :invoice_id=>'invo-1'
-
-     }
-
-     # render :json=>@orders
-
-   #puts @orders[:id]
+    @orders= ApiM8::Client::Books::Orders.instance.index
 
   end
 
   def show
-    @orders={
-        :id=>'1',
-        :user_id=>'234-er',
-        :tenant_id=>'234ww',#current_context.tenant_id,#
-        :vat=>'1.2',
-        :currency=>'euro',
-        :total_amount=>'20',
-        :invoice_id=>'invo-1'
+    @order= ApiM8::Client::Books::Orders.instance.show(params[:id])
 
-    }
-
-    @order=@orders.each do|k,v|
-      #{k}:#{v}
-    end
-
-    p @order
   end
 
   def edit
-    # @order=ApiM8::Resources::Books::Order.new.find(params[:id])
+    @order= ApiM8::Client::Books::Orders.instance.show(params[:id])
   end
 
   def new
@@ -53,6 +20,18 @@ class OrdersController < ApplicationController
   end
 
   def update
+    @order= ApiM8::Client::Books::Orders.instance.show(params[:id])
+
+    @order.update(
+        :vat=> params[:vat],
+        :total_amount=> params[:total_amount],
+        :currency=> params[:currency])
+    if  @order.save
+
+      redirect_to orders_path, :notice=>'Order has been updated.'
+    else
+      redirect_to "edit"
+    end
   end
 
   def delete
